@@ -6,10 +6,11 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24453125" />
         <entry key="app/src/main/res/layout/activity_book.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_bookings.xml" value="0.22972972972972974" />
-        <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_details.xml" value="0.232421875" />
+        <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_dates.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22058823529411764" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
       </map>
     </option>
   </component>

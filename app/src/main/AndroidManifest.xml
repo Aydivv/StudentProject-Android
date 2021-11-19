@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmBnB">
         <activity
+            android:name=".Dates"
+            android:exported="true" />
+        <activity
             android:name=".Confirmation"
             android:exported="true" />
         <activity

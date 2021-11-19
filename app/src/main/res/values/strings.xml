@@ -7,4 +7,5 @@
     <string name="cBookText1">Available Accommodations:</string>
     <string name="vBookHead">Your Bookings</string>
     <string name="shepherdshut">Shepherds Hut</string>
+    <string name="detailsHead">Your Details</string>
 </resources>
