@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmBnB">
         <activity
+            android:name=".Confirmation"
+            android:exported="true" />
+        <activity
+            android:name=".Payment"
+            android:exported="true" />
+        <activity
+            android:name=".Details"
+            android:exported="true" />
+        <activity
+            android:name=".book"
+            android:exported="true" />
+        <activity
+            android:name=".bookings"
+            android:exported="true" />
+        <activity
             android:name=".home"
             android:exported="true" />
         <activity

@@ -9,10 +9,11 @@
 
     <TextView
         android:id="@+id/head"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="235dp"
+        android:layout_height="67dp"
         android:background="@drawable/my_border"
         android:text="@string/farmbnbheading"
+        android:gravity="center_horizontal"
         android:textColor="#E91149"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -33,7 +34,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="vBooking"/>
 
     <Button
         android:id="@+id/createBookingBtn"
@@ -49,7 +51,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewBookingBtn"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.161"
+        android:onClick="cBooking"/>
 
 
 </android.support.constraint.ConstraintLayout>

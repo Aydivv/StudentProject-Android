@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">FarmBnB</string>
-    <string name="farmbnbheading">FarmBnB</string>
     <string name="vBookingBtn">View Booking</string>
     <string name="cBookingBtn">Create Booking</string>
+    <string name="farmbnbheading">FarmBnB</string>
+    <string name="cBookHead">Create Booking</string>
+    <string name="cBookText1">Available Accommodations:</string>
+    <string name="vBookHead">Your Bookings</string>
+    <string name="shepherdshut">Shepherds Hut</string>
 </resources>
