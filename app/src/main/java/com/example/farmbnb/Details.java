@@ -61,5 +61,4 @@ public class Details extends AppCompatActivity {
         dpd.show();
     }
 
-
 }

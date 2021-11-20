@@ -7,10 +7,11 @@
         <entry key="app/src/main/res/layout/activity_book.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_bookings.xml" value="0.22972972972972974" />
         <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/activity_dates.xml" value="0.1366120218579235" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22058823529411764" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15337423312883436" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.25" />
       </map>
     </option>

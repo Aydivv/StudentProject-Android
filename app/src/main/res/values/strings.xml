@@ -10,4 +10,5 @@
     <string name="detailsHead">Your Details</string>
     <string name="catering">Catering</string>
     <string name="payment">Payment</string>
+    <string name="confirmation">Confirmation</string>
 </resources>

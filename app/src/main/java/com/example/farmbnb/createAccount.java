@@ -4,23 +4,18 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class createAccount extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create_account);
     }
 
-    public void goHomepage(View view){
+    public void goHome(View view){
         Intent home = new Intent(this,home.class);
         startActivity(home);
     }
 
-    public void goCreateAcc(View view){
-        Intent create = new Intent(this,createAccount.class);
-        startActivity(create);
-    }
 }

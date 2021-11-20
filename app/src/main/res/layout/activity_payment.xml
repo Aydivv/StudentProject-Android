@@ -48,7 +48,7 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="140dp"
+        android:layout_width="202dp"
         android:layout_height="29dp"
         android:layout_marginTop="24dp"
         android:text="Name on card:"
@@ -97,6 +97,74 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/expiryDate"
+        android:layout_width="170dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/my_border"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="center"
+        android:hint="MM/YYYY"
+        android:inputType="date"
+        android:onClick="expiryDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expiryTxt" />
+
+    <TextView
+        android:id="@+id/expiryTxt"
+        android:layout_width="161dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:text="Expiry:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="174dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="16dp"
+        android:text="Security Number:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expiryDate" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="170dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="CVV"
+        android:gravity="center"
+        android:background="@drawable/my_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/my_border"
+        android:text="Pay"
+        android:textColor="#E91149"
+        android:textSize="20sp"
+        android:onClick="goConfirmation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

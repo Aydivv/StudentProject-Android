@@ -4,10 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Details">
+    tools:context=".createAccount">
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/password"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/my_border"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwd" />
+
+    <EditText
+        android:id="@+id/repeatpassword"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/my_border"
+        android:ems="10"
+        android:hint="Repeat Password"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <EditText
+        android:id="@+id/pnumber"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -22,14 +50,14 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="85dp"
+        android:layout_width="149dp"
         android:layout_height="29dp"
         android:layout_marginTop="12dp"
         android:text="Phone"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
@@ -40,7 +68,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/my_border"
         android:gravity="center"
-        android:text="@string/detailsHead"
+        android:text="Create Account"
         android:textColor="#E91149"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +80,7 @@
         android:id="@+id/textView6"
         android:layout_width="85dp"
         android:layout_height="29dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:text="Name:"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -102,93 +130,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <ImageButton
-        android:id="@+id/loginButton"
-        android:layout_width="82dp"
-        android:layout_height="82dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="36dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:backgroundTint="#FFFFFF"
-        android:onClick="goPayment"
-        android:scaleType="fitCenter"
+    <TextView
+        android:id="@+id/passwd"
+        android:layout_width="144dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="12dp"
+        android:text="Password"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pnumber" />
+
+    <TextView
+        android:id="@+id/button4"
+        android:layout_width="161dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="48dp"
+        android:text="Sign Up"
+        android:gravity="center"
+        android:textColor="#e91149"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/loginicon"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/arrivalDate"
-        android:layout_width="332dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/my_border"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="Select Date"
-        android:inputType="date"
-        android:onClick="datePickerArrival"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/arrivalText" />
-
-    <TextView
-        android:id="@+id/arrivalText"
-        android:layout_width="85dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="12dp"
-        android:text="Arrival"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
-
-    <TextView
-        android:id="@+id/departureText"
-        android:layout_width="110dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="12dp"
-        android:text="Departure"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/arrivalDate" />
-
-    <EditText
-        android:id="@+id/departureDate"
-        android:layout_width="332dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/my_border"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="Select Date"
-        android:inputType="date"
-        android:onClick="datePickerDeparture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/departureText" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="201dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/my_border"
-        android:buttonTint="#E91149"
-        android:text="@string/catering"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/loginButton"
-        app:layout_constraintEnd_toStartOf="@+id/loginButton"
-        app:layout_constraintTop_toTopOf="@+id/loginButton" />
+        android:onClick="goHome"/>
 
 </android.support.constraint.ConstraintLayout>
