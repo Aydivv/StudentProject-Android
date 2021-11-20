@@ -38,8 +38,25 @@ public class Payment extends AppCompatActivity {
     }
 
     public void goConfirmation(View view){
-        Intent goConfirm = new Intent(this,Confirmation.class);
-        startActivity(goConfirm);
+        EditText name = (EditText) findViewById(R.id.paymentName);
+        EditText cardType = (EditText) findViewById(R.id.paymentCardType);
+        EditText cardNumber = (EditText) findViewById(R.id.paymentCard);
+        EditText expiry = (EditText) findViewById(R.id.expiryDate);
+        EditText cvv = (EditText) findViewById(R.id.cvv);
+        if (name.length()==0){
+            name.setError("Enter Full Name");
+        } else if (cardType.length()==0){
+            cardType.setError("Enter Type of Card");
+        } else if (cardNumber.length()==0){
+            cardNumber.setError("Enter Card Number");
+        } else if (expiry.length()==0){
+            expiry.setError("Cannot be empty");
+        } else if (cvv.length()!=3){
+            cvv.setError("Has to be three digits");
+        } else {
+            Intent goConfirm = new Intent(this, Confirmation.class);
+            startActivity(goConfirm);
+        }
     }
 
 }

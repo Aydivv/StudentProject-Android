@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Payment">
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/paymentCard"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/paymentCardType" />
 
     <TextView
         android:id="@+id/textView"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/paymentName"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -83,10 +83,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/paymentName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/paymentCardType"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -124,7 +124,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/paymentCard" />
 
     <TextView
         android:id="@+id/textView3"
@@ -139,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@+id/expiryDate" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/cvv"
         android:layout_width="170dp"
         android:layout_height="49dp"
         android:layout_marginTop="8dp"

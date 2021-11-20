@@ -21,8 +21,25 @@ public class Details extends AppCompatActivity {
     }
 
     public void goPayment(View view){
-        Intent goPayment = new Intent(this,Payment.class);
-        startActivity(goPayment);
+        EditText name = (EditText) findViewById(R.id.detailName);
+        EditText address = (EditText) findViewById(R.id.detailAddress);
+        EditText number = (EditText) findViewById(R.id.detailPhone);
+        EditText arrival = (EditText) findViewById(R.id.arrivalDate);
+        EditText departure = (EditText) findViewById(R.id.departureDate);
+        if (name.length() == 0) {
+            name.setError("Enter Name");
+        } else if (address.length() == 0) {
+            address.setError("Enter Address");
+        } else if (number.length() == 0) {
+            number.setError("Enter Number");
+        } else if (arrival.length()==0){
+            arrival.setError("Cannot be empty");
+        } else if (departure.length()==0){
+            departure.setError("Cannot be empty");
+        } else {
+            Intent goPayment = new Intent(this,Payment.class);
+            startActivity(goPayment);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

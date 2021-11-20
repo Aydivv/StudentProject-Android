@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/my_border"
         android:text=" FarmBnB "
-
         android:textColor="#E91149"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -41,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/head" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/createPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -80,7 +79,7 @@
         android:textStyle="bold"
         android:textColor="#E91149"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintBottom_toTopOf="@+id/createPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/createPassword"
         app:srcCompat="@drawable/loginicon"
         tools:ignore="SpeakableTextPresentCheck"
         android:onClick="goHomepage"/>

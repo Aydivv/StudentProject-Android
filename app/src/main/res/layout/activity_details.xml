@@ -7,7 +7,7 @@
     tools:context=".Details">
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/detailPhone"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/detailAddress" />
 
     <TextView
         android:id="@+id/textView"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/detailName"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -86,10 +86,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/detailName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/detailAddress"
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
@@ -114,7 +114,7 @@
         android:onClick="goPayment"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
+        app:layout_constraintEnd_toEndOf="@+id/detailPhone"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/loginicon"
@@ -147,7 +147,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/detailPhone" />
 
     <TextView
         android:id="@+id/departureText"
@@ -179,7 +179,7 @@
         app:layout_constraintTop_toBottomOf="@+id/departureText" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/catering"
         android:layout_width="201dp"
         android:layout_height="46dp"
         android:layout_marginEnd="40dp"
