@@ -106,18 +106,90 @@
         android:id="@+id/loginButton"
         android:layout_width="82dp"
         android:layout_height="82dp"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="36dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:backgroundTint="#FFFFFF"
-        android:onClick="goDates"
+        android:onClick="goPayment"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
         app:srcCompat="@drawable/loginicon"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/arrivalDate"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/my_border"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Select Date"
+        android:inputType="date"
+        android:onClick="datePickerArrival"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arrivalText" />
+
+    <TextView
+        android:id="@+id/arrivalText"
+        android:layout_width="85dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="12dp"
+        android:text="Arrival"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <TextView
+        android:id="@+id/departureText"
+        android:layout_width="110dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="12dp"
+        android:text="Departure"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arrivalDate" />
+
+    <EditText
+        android:id="@+id/departureDate"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/my_border"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Select Date"
+        android:inputType="date"
+        android:onClick="datePickerDeparture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/departureText" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="201dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/my_border"
+        android:buttonTint="#E91149"
+        android:text="@string/catering"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/loginButton"
+        app:layout_constraintEnd_toStartOf="@+id/loginButton"
+        app:layout_constraintTop_toTopOf="@+id/loginButton" />
+
 </android.support.constraint.ConstraintLayout>
 
