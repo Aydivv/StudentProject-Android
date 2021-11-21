@@ -25,10 +25,19 @@ public class MainActivity extends AppCompatActivity {
         else if(pass.length()==0){
             pass.setError("Enter Password");
         }
-        else{
-            Toast.makeText(MainActivity.this,"Added", Toast.LENGTH_SHORT);
+        else if(number.getText().toString().equals("0000") && pass.getText().toString().equals("test")){
+            Toast.makeText(MainActivity.this,"Logged in.", Toast.LENGTH_SHORT).show();
             Intent home = new Intent(this,home.class);
             startActivity(home);
+        }
+        else{
+            if (!number.getText().toString().equals("0000")){
+                number.setError("Phone Number not registered.");
+            }
+            else if (!pass.getText().toString().equals("test")){
+                pass.setError("Wrong Password.");
+            }
+            Toast.makeText(MainActivity.this,"Incorrect login.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -37,8 +46,4 @@ public class MainActivity extends AppCompatActivity {
         Intent create = new Intent(this,createAccount.class);
         startActivity(create);
     }
-
-
-
-
 }

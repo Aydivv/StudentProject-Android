@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
 
@@ -51,9 +52,10 @@ public class Payment extends AppCompatActivity {
             cardNumber.setError("Enter Card Number");
         } else if (expiry.length()==0){
             expiry.setError("Cannot be empty");
-        } else if (cvv.length()!=3){
-            cvv.setError("Has to be three digits");
+        } else if (cvv.length() != 3 && cvv.length() != 4){
+            cvv.setError("Has to be three or four digits");
         } else {
+            Toast.makeText(Payment.this,"Booking Confirmed.",Toast.LENGTH_SHORT).show();
             Intent goConfirm = new Intent(this, Confirmation.class);
             startActivity(goConfirm);
         }

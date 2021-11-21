@@ -11,4 +11,5 @@
     <string name="catering">Catering</string>
     <string name="payment">Payment</string>
     <string name="confirmation">Confirmation</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

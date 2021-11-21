@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class createAccount extends AppCompatActivity {
 
@@ -33,6 +34,7 @@ public class createAccount extends AppCompatActivity {
         } else if (!password.getText().toString().equals(rpassword.getText().toString())) {
             rpassword.setError("Password does not match");
         } else {
+            Toast.makeText(createAccount.this,"Account Created.",Toast.LENGTH_SHORT).show();
             Intent home = new Intent(this, home.class);
             startActivity(home);
         }

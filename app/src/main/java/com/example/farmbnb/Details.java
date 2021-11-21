@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Details extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class Details extends AppCompatActivity {
         } else if (departure.length()==0){
             departure.setError("Cannot be empty");
         } else {
+            Toast.makeText(Details.this,"Reserved",Toast.LENGTH_SHORT).show();
             Intent goPayment = new Intent(this,Payment.class);
             startActivity(goPayment);
         }
