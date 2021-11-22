@@ -1,10 +1,15 @@
 package com.example.farmbnb;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +18,31 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
+    NotificationManagerCompat nMC;
+    Notification reminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel nChannel = new NotificationChannel("ch1", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manage = getSystemService(NotificationManager.class);
+            manage.createNotificationChannel(nChannel);
+        }
     }
 
+    public void dateNotify(String arrival, String departure) {
+
+        NotificationCompat.Builder notif = new NotificationCompat.Builder(this, "ch1")
+                .setSmallIcon(android.R.drawable.stat_notify_sync)
+                .setContentTitle("Booking Confirmed!")
+                .setContentText("Congratulations! Your booking has been confirmed at FarmBnB from " + arrival +" to " + departure + ".");
+
+        nMC = NotificationManagerCompat.from(this);
+        reminder = notif.build();
+        nMC.notify(1,reminder);
+    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void expiryDate(View view){
         EditText date;
@@ -44,6 +67,8 @@ public class Payment extends AppCompatActivity {
         EditText cardNumber = (EditText) findViewById(R.id.paymentCard);
         EditText expiry = (EditText) findViewById(R.id.expiryDate);
         EditText cvv = (EditText) findViewById(R.id.cvv);
+        String aDate = getIntent().getStringExtra("aDate");
+        String dDate = getIntent().getStringExtra("dDate");
         if (name.length()==0){
             name.setError("Enter Full Name");
         } else if (cardType.length()==0){
@@ -55,6 +80,7 @@ public class Payment extends AppCompatActivity {
         } else if (cvv.length() != 3 && cvv.length() != 4){
             cvv.setError("Has to be three or four digits");
         } else {
+            dateNotify(aDate,dDate);
             Toast.makeText(Payment.this,"Booking Confirmed.",Toast.LENGTH_SHORT).show();
             Intent goConfirm = new Intent(this, Confirmation.class);
             startActivity(goConfirm);

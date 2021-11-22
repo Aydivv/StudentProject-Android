@@ -87,6 +87,35 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fromConfirmDate"
+            android:layout_width="121dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/my_border"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:gravity="center"
+
+            app:layout_constraintBottom_toBottomOf="@+id/shepherds"
+            app:layout_constraintStart_toEndOf="@+id/shepherds"
+            app:layout_constraintTop_toTopOf="@+id/shepherds"
+            app:layout_constraintVertical_bias="0.206" />
+
+        <TextView
+            android:id="@+id/toConfirmDate"
+            android:layout_width="121dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/my_border"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/shepherds"
+            app:layout_constraintStart_toEndOf="@+id/shepherds"
+            app:layout_constraintTop_toTopOf="@+id/shepherds"
+            app:layout_constraintVertical_bias="0.804" />
     </android.support.constraint.ConstraintLayout>
 
     <TextView

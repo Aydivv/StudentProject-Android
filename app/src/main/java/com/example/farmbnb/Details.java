@@ -1,11 +1,18 @@
 package com.example.farmbnb;
 
+import static com.example.farmbnb.bookings.fromDate;
+
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +21,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Details extends AppCompatActivity {
+    NotificationManagerCompat nMC;
+    Notification aReminder,dReminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +31,18 @@ public class Details extends AppCompatActivity {
     }
 
     public void goPayment(View view){
-        EditText name = (EditText) findViewById(R.id.detailName);
-        EditText address = (EditText) findViewById(R.id.detailAddress);
-        EditText number = (EditText) findViewById(R.id.detailPhone);
+        EditText noOfPeople = (EditText) findViewById(R.id.detailNOP);
+        EditText noOfChildren = (EditText) findViewById(R.id.detailNOC);
         EditText arrival = (EditText) findViewById(R.id.arrivalDate);
         EditText departure = (EditText) findViewById(R.id.departureDate);
-        if (name.length() == 0) {
-            name.setError("Enter Name");
-        } else if (address.length() == 0) {
-            address.setError("Enter Address");
-        } else if (number.length() == 0) {
-            number.setError("Enter Number");
+        String aDate = arrival.getText().toString();
+        bookings.fromDate = aDate;
+        String dDate = departure.getText().toString();
+        bookings.toDate = dDate;
+        if (noOfPeople.length()==0){
+            noOfPeople.setError("Cannot be empty");
+        } else if (noOfChildren.length()==0){
+            noOfChildren.setError("Cannot be empty");
         } else if (arrival.length()==0){
             arrival.setError("Cannot be empty");
         } else if (departure.length()==0){
@@ -40,6 +50,8 @@ public class Details extends AppCompatActivity {
         } else {
             Toast.makeText(Details.this,"Reserved",Toast.LENGTH_SHORT).show();
             Intent goPayment = new Intent(this,Payment.class);
+            goPayment.putExtra("aDate",aDate);
+            goPayment.putExtra("dDate",dDate);
             startActivity(goPayment);
         }
     }
