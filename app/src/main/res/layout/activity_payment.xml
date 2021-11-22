@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Payment">
+
     <EditText
         android:id="@+id/paymentCard"
         android:layout_width="332dp"
@@ -14,7 +15,6 @@
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -22,14 +22,14 @@
         android:id="@+id/textView9"
         android:layout_width="140dp"
         android:layout_height="29dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Card Number:"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paymentCardType" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnercard" />
 
     <TextView
         android:id="@+id/textView"
@@ -64,11 +64,10 @@
         android:layout_width="332dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
         android:background="@drawable/my_border"
+        android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -84,19 +83,6 @@
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paymentName" />
-
-    <EditText
-        android:id="@+id/paymentCardType"
-        android:layout_width="332dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/my_border"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
         android:id="@+id/expiryDate"
@@ -165,6 +151,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnercard"
+        android:layout_width="332dp"
+        android:layout_height="46dp"
+        android:background="@drawable/my_border"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.029" />
 
 
 </android.support.constraint.ConstraintLayout>

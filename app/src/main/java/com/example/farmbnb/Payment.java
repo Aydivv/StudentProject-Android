@@ -13,14 +13,16 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
     NotificationManagerCompat nMC;
     Notification reminder;
-
+    Spinner spin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,10 @@ public class Payment extends AppCompatActivity {
             NotificationManager manage = getSystemService(NotificationManager.class);
             manage.createNotificationChannel(nChannel);
         }
+        spin = findViewById(R.id.spinnercard);
+        ArrayAdapter adpt = ArrayAdapter.createFromResource(this,R.array.cards, android.R.layout.simple_spinner_item);
+        adpt.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spin.setAdapter(adpt);
     }
 
     public void dateNotify(String arrival, String departure) {
@@ -63,7 +69,7 @@ public class Payment extends AppCompatActivity {
 
     public void goConfirmation(View view){
         EditText name = (EditText) findViewById(R.id.paymentName);
-        EditText cardType = (EditText) findViewById(R.id.paymentCardType);
+        Spinner cardType = (Spinner) findViewById(R.id.spinnercard);
         EditText cardNumber = (EditText) findViewById(R.id.paymentCard);
         EditText expiry = (EditText) findViewById(R.id.expiryDate);
         EditText cvv = (EditText) findViewById(R.id.cvv);
@@ -71,8 +77,6 @@ public class Payment extends AppCompatActivity {
         String dDate = getIntent().getStringExtra("dDate");
         if (name.length()==0){
             name.setError("Enter Full Name");
-        } else if (cardType.length()==0){
-            cardType.setError("Enter Type of Card");
         } else if (cardNumber.length()==0){
             cardNumber.setError("Enter Card Number");
         } else if (expiry.length()==0){
