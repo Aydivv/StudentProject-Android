@@ -166,17 +166,17 @@
             android:id="@+id/tvPJca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
-            android:paddingVertical="5dp"
             android:paddingHorizontal="15sp"
+            android:paddingVertical="5dp"
             android:text="PJ"
+            android:textStyle="bold"
             android:textColor="@color/primary"
-            android:layout_centerVertical="true"
-            android:textSize="25sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="25sp" />
 
         <TextView
             android:layout_width="wrap_content"
