@@ -28,7 +28,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.053" />
 
-
     <EditText
         android:id="@+id/etStudentID"
         android:layout_width="257dp"
@@ -38,6 +37,7 @@
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
         android:hint="               "
+        android:inputType="number"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
         android:textColor="@color/black"
@@ -53,56 +53,7 @@
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
         android:hint="               "
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="5dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-
-    <TextView
-        android:id="@+id/tvStudentID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Student ID"
-        android:textColor="@color/black"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/etStudentID"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" />
-    <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/guideline2" /><EditText
-        android:id="@+id/etStudentID"
-        android:layout_width="257dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/hollow_rounded_orange"
-        android:fontFamily="@font/roboto_medium"
-        android:gravity="center"
-        android:hint="               "
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="5dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="257dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="172dp"
-        android:background="@drawable/hollow_rounded_orange"
-        android:fontFamily="@font/roboto_medium"
-        android:gravity="center"
-        android:hint="               "
+        android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
         android:textColor="@color/black"
