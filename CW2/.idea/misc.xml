@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/blackroundedcorner.xml" value="0.34444444444444444" />
+        <entry key="app/src/main/res/drawable/greybordergreyfill.xml" value="0.34444444444444444" />
+        <entry key="app/src/main/res/drawable/hollow_rounded_orange.xml" value="0.4197916666666667" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.4197916666666667" />
-        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.38958333333333334" />
+        <entry key="app/src/main/res/drawable/whiteborderblackfill.xml" value="0.34444444444444444" />
+        <entry key="app/src/main/res/drawable/whiteborderwhitefill.xml" value="0.34444444444444444" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,51 +8,174 @@
     android:background="@color/primary"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/mainlayout"
+    <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:paddingLeft="50dp"
+        android:paddingTop="5dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="5dp"
+        android:text="Projudent"
+        android:textColor="@color/primary"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
-        <TextView
-            android:id="@+id/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="52dp"
-            android:background="@drawable/rounded_corner"
-            android:fontFamily="@font/roboto_medium"
-            android:gravity="center"
-            android:paddingLeft="50dp"
-            android:paddingTop="5dp"
-            android:paddingRight="50dp"
-            android:paddingBottom="5dp"
-            android:text="Projudent"
-            android:textColor="@color/primary"
-            android:textSize="40sp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <EditText
+        android:id="@+id/etStudentID"
+        android:layout_width="257dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/hollow_rounded_orange"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:hint="               "
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="257dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/hollow_rounded_orange"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:hint="               "
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+
+    <TextView
+        android:id="@+id/tvStudentID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Student ID"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/etStudentID"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Password"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" /><EditText
+        android:id="@+id/etStudentID"
+        android:layout_width="257dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/hollow_rounded_orange"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:hint="               "
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="257dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/hollow_rounded_orange"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:hint="               "
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+
+    <TextView
+        android:id="@+id/tvStudentID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Student ID"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/etStudentID"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Password"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="35dp"
+        android:layout_marginTop="144dp"
+        android:background="@drawable/blackroundedcorner"
+        android:theme="@style/Button.color"
+        android:text="Login"
+        android:textSize="23sp"
+
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/black"
-        android:layout_toRightOf="@+id/mainlayout"
-        android:layout_height="match_parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="750dp"
-            android:fontFamily="@font/roboto_medium"
-            android:maxLines="1"
-            android:rotation="-90"
-            android:gravity="center"
-            android:text="REGISTER"
-            android:textColor="@color/primary"
-            android:textSize="30sp" />
-    </RelativeLayout>
-
+        <ImageView
+            android:id="@+id/register"
+            android:layout_width="67dp"
+            android:layout_height="159dp"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/register" />
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="26dp" />
 
 
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
