@@ -34,7 +34,8 @@
 
     <EditText
         android:id="@+id/etTitle"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="72dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -61,7 +62,8 @@
 
     <EditText
         android:id="@+id/etYear"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -89,7 +91,8 @@
 
     <EditText
         android:id="@+id/etDescription"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -105,7 +108,8 @@
 
     <TextView
         android:id="@+id/etUpload"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -124,7 +128,6 @@
         android:id="@+id/btnAddPJ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
         android:background="@drawable/blackroundedcorner"
         android:fontFamily="@font/roboto_medium"
         android:paddingHorizontal="20dp"
@@ -136,7 +139,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpload"
+        app:layout_constraintVertical_bias="0.741" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

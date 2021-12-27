@@ -8,10 +8,11 @@
     android:background="@color/black">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/roboto_medium"
         android:text="My Projects"
         android:textColor="@color/primary"
@@ -20,22 +21,48 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="335dp"
-        android:layout_height="616dp"
-        android:layout_marginTop="148dp"
+        android:id="@+id/svProjects"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/whiteborderblackfill"
         android:fillViewport="true"
         android:orientation="vertical"
         android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="lolz"
+                android:textColor="@color/white"
+                android:textSize="70sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="lolz"
+                android:textColor="@color/white"
+                android:textSize="70sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="lolz"
+                android:textColor="@color/white"
+                android:textSize="70sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,42 +126,44 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/greybordergreyfill">
+        android:background="@drawable/greybordergreyfill"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/tvPJca"
+            android:id="@+id/tvPJmp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:paddingHorizontal="15sp"
             android:paddingVertical="5dp"
             android:text="PJ"
-            android:textStyle="bold"
             android:textColor="@color/primary"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:onClick="toWelcome"/>
 
         <TextView
+            android:id="@+id/btnAddPJ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
-            android:textSize="20sp"
             android:background="@drawable/whiteborderwhitefill"
             android:fontFamily="@font/roboto_medium"
             android:paddingHorizontal="15sp"
             android:paddingVertical="5dp"
             android:text="Add Project"
             android:textColor="@color/black"
-
-            />
+            android:textSize="20sp"
+            android:onClick="toAddPJ"/>
 
     </RelativeLayout>
 

@@ -30,13 +30,13 @@
 
     <EditText
         android:id="@+id/etStudentID"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:hint="               "
         android:inputType="number"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
@@ -46,13 +46,13 @@
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="172dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:hint="               "
         android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
@@ -84,20 +84,22 @@
 
     <TextView
         android:id="@+id/btnLogin"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="5dp"
-        android:paddingHorizontal="35dp"
-        android:layout_marginTop="144dp"
         android:background="@drawable/blackroundedcorner"
-        android:theme="@style/Button.color"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="35dp"
+        android:paddingVertical="5dp"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="23sp"
+        android:theme="@style/Button.color"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintVertical_bias="0.657"
+        android:onClick="toWelcome"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -106,7 +108,8 @@
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="toRegister">
 
         <ImageView
             android:id="@+id/register"

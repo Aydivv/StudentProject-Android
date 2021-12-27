@@ -34,7 +34,8 @@
 
     <EditText
         android:id="@+id/etStudentIDca"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/whiteborderblackfill"
@@ -62,13 +63,13 @@
 
     <EditText
         android:id="@+id/etPasswordca"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
         android:layout_height="46dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:hint="               "
         android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
@@ -90,7 +91,8 @@
 
     <EditText
         android:id="@+id/etRepeatPasswordca"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
@@ -118,7 +120,8 @@
 
     <EditText
         android:id="@+id/etFirstName"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
@@ -146,7 +149,8 @@
 
     <EditText
         android:id="@+id/etLastName"
-        android:layout_width="257dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
@@ -179,9 +183,10 @@
             android:paddingHorizontal="15sp"
             android:paddingVertical="5dp"
             android:text="PJ"
-            android:textStyle="bold"
             android:textColor="@color/primary"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:onClick="toHome"/>
 
         <TextView
             android:layout_width="wrap_content"
