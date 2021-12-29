@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.41875" />
         <entry key="app/src/main/res/drawable/blackroundedcorner.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/drawable/greybordergreyfill.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/drawable/hollow_rounded_orange.xml" value="0.4197916666666667" />
@@ -14,6 +15,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_my_projects.xml" value="0.31965811965811963" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/project_item.xml" value="0.3311965811965812" />
       </map>
     </option>
   </component>
