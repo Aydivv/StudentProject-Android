@@ -25,4 +25,9 @@ public class createAccount extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
     }
+
+    public void toWelcome(View view){
+        Intent intent = new Intent(this,welcome.class);
+        startActivity(intent);
+    }
 }

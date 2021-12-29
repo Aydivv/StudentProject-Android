@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.4197916666666667" />
         <entry key="app/src/main/res/drawable/whiteborderblackfill.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/drawable/whiteborderwhitefill.xml" value="0.34444444444444444" />
-        <entry key="app/src/main/res/layout/activity_add_project.xml" value="0.31965811965811963" />
+        <entry key="app/src/main/res/layout/activity_add_project.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_my_projects.xml" value="0.31965811965811963" />

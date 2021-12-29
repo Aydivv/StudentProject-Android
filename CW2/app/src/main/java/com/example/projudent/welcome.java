@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class welcome extends AppCompatActivity {
+public class welcome extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +18,10 @@ public class welcome extends AppCompatActivity {
         Intent intent = new Intent(this,myProjects.class);
         startActivity(intent);
         overridePendingTransition(R.anim.right_slide_in,R.anim.right_slide_out);
+    }
+
+    public void toLogin(View view) {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -42,7 +42,8 @@
         android:textStyle="bold"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvPJw"
-        app:layout_constraintEnd_toStartOf="@+id/constraintLayout" />
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        android:onClick="toLogin"/>
 
     <TextView
         android:id="@+id/tvWelcome"
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="WELCOME BACK"
+        android:text="@string/welcometext"
         android:textColor="@color/black"
         android:textSize="35sp"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
