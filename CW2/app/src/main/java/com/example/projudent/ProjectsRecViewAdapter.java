@@ -35,6 +35,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvTitle.setText(projects.get(position).getTitle());
+        holder.tvYear.setText(String.valueOf(projects.get(position).getYear()));
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,14 +56,14 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tvTitle, tvDesc;
+        private TextView tvTitle, tvYear;
         private CardView parent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.parent);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvDesc = itemView.findViewById(R.id.tvDesc);
+            tvYear = itemView.findViewById(R.id.tvYear);
         }
     }
 }

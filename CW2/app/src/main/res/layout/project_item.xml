@@ -32,11 +32,11 @@
             android:textSize="27sp" />
 
         <TextView
-            android:id="@+id/tvDesc"
+            android:id="@+id/tvYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="Desxription" />
+            android:text="Year" />
 
     </LinearLayout>
 
