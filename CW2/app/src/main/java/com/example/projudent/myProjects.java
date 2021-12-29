@@ -27,7 +27,7 @@ public class myProjects extends AppCompatActivity {
         projects.add(new Project("Baking soda volcano 3","made a volcano using baking soda and shiz",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
         projects.add(new Project("Baking soda volcano 4","made a volcano using baking soda and shiz",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
 
-        ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter();
+        ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this);
         adapter.setProjects(projects);
 
         projectsRV.setAdapter(adapter);

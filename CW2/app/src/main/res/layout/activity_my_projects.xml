@@ -20,27 +20,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/rlProjects"
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rvProjects"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="10dp"
-        android:background="@drawable/whiteborderblackfill"
         android:fillViewport="true"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProjects"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
