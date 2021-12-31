@@ -34,6 +34,7 @@
             android:maxLines="1"
             android:paddingHorizontal="5dp"
             android:text="Title"
+            android:textColor="@color/primary"
             android:textSize="27sp" />
 
         <RelativeLayout
@@ -47,13 +48,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Year" />
+                android:text="Year"
+                android:textColor="@color/primary"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_down"
-                android:layout_alignParentEnd="true"/>
+                android:id="@+id/btnDownArrow"/>
         </RelativeLayout>
 
 
@@ -77,9 +80,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tvDesc"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_up"
-            android:id="@+id/btnUpArrow"/>
+            android:id="@+id/btnUpArrow" />
 
 
     </RelativeLayout>
