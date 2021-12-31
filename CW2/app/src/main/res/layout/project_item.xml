@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
-    android:layout_margin = "10dp">
+    android:layout_margin = "10dp"
+    app:cardBackgroundColor="#191818">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -68,22 +70,69 @@
         android:id="@+id/hiddenRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:background="#0F0E0E">
 
         <TextView
+            android:paddingVertical="10dp"
             android:id="@+id/tvDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="@string/material_motion_easing_accelerated" />
+            android:text="@string/material_motion_easing_accelerated"
+            android:textColor="@color/primary" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvDesc"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_up"
-            android:id="@+id/btnUpArrow" />
+            android:layout_marginVertical="8dp">
+
+            <TextView
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/primaryborderblackfill"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="5dp"
+                android:text=" Edit "
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/btnEdit"
+                android:background="@drawable/primaryfillprimaryborder"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="5dp"
+                android:text="Delete"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnEdit"
+                app:layout_constraintEnd_toStartOf="@+id/btnUpArrow"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btnEdit" />
+
+            <ImageView
+                android:id="@+id/btnUpArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_up"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
     </RelativeLayout>

@@ -7,6 +7,8 @@
         <entry key="app/src/main/res/drawable/blackroundedcorner.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/drawable/greybordergreyfill.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/drawable/hollow_rounded_orange.xml" value="0.4197916666666667" />
+        <entry key="app/src/main/res/drawable/primaryborderblackfill.xml" value="0.4982905982905983" />
+        <entry key="app/src/main/res/drawable/primaryfillprimaryborder.xml" value="0.4982905982905983" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.4197916666666667" />
         <entry key="app/src/main/res/drawable/whiteborderblackfill.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/drawable/whiteborderwhitefill.xml" value="0.34444444444444444" />
