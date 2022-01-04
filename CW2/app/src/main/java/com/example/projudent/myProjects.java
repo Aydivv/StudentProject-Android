@@ -7,30 +7,79 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class myProjects extends AppCompatActivity {
     private RecyclerView projectsRV;
-
+    private TextView myPJs;
+    private ArrayList<Project> currentProjects;
+    private JSONObject currentProject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_projects);
-
         projectsRV = findViewById(R.id.rvProjects);
-
-        ArrayList<Project> projects = new ArrayList<>();
-        projects.add(new Project("Baking soda volcano","made a volcano using baking soda and shasdfadsfadsfadsfasfasfcvcascxdsacujgabsdkuycgbakud fakluisdy fkauid sfuksd fkuas ygfbkus dfgukafgysa fgsdaf ukfds iasdz",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
-        projects.add(new Project("Baking soda volcano 1","made a volcano using baking soda and sh2iz",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
-        projects.add(new Project("Baking soda volcano 2","made a volcano using baking soda and shi3z",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
-        projects.add(new Project("Baking soda volcano 3","made a volcano using baking soda and shi4z",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
-        projects.add(new Project("Baking soda volcano 4","made a volcano using baking soda and s5hiz",2021,"https://www.treehugger.com/thmb/FxClPLBSTwKX6oINOBIwxBkYCLQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2011__03__Baking_Soda_Volcano-c9849e2f6b6f4f38b4fef6674dd61e03.jpg"));
-
+        myPJs = findViewById(R.id.tvMyPJ);
+        currentProjects = new ArrayList<Project>();
         ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this);
-        adapter.setProjects(projects);
 
-        projectsRV.setAdapter(adapter);
+        
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i=0; i<response.length();i++){
+                    try {
+                        int ID = response.getJSONObject(i).getInt("studentID");
+                        if(ID == 1068){
+                            JSONObject currentProject = response.getJSONObject(i);
+                            int projectID = currentProject.getInt("projectID");
+                            int studentID = currentProject.getInt("studentID");
+                            String title = currentProject.getString("title");
+                            String desc = currentProject.getString("description");
+                            int year = currentProject.getInt("year");
+                            String photo = currentProject.getString("photo");
+                            currentProjects.add(new Project(projectID,studentID,title,desc,year,photo));
+
+                            projectsRV.setAdapter(adapter);
+                        }
+
+                    } catch (JSONException e) {
+                        myPJs.setText("Parsing Error" + e.toString());
+                        continue;
+                    }
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                myPJs.setText("Error" + error.toString());
+            }
+        });
+
+        queue.add(jsonArrayRequest);
+
+
+        adapter.setProjects(currentProjects);
         projectsRV.setLayoutManager(new LinearLayoutManager(this));
     }
 

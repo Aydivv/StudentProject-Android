@@ -1,6 +1,8 @@
 package com.example.projudent;
 
 public class Project {
+    private int projectID;
+    private int studentID;
     private String Title;
     private String Desc;
     private int year;
@@ -8,31 +10,45 @@ public class Project {
     private Boolean isExpanded;
 
 
-    public Project(String title, String desc, int year, String image) {
+    public Project(int projectID, int studentID, String title, String desc, int year, String image) {
+        this.projectID = projectID;
+        this.studentID = studentID;
         Title = title;
         Desc = desc;
         this.year = year;
         this.image = image;
-        isExpanded = false;
+        this.isExpanded = false;
     }
 
     @Override
     public String toString() {
         return "Project{" +
-                "Title='" + Title + '\'' +
+                "projectID=" + projectID +
+                ", studentID=" + studentID +
+                ", Title='" + Title + '\'' +
                 ", Desc='" + Desc + '\'' +
                 ", year=" + year +
                 ", image='" + image + '\'' +
+                ", isExpanded=" + isExpanded +
                 '}';
     }
 
-    public Boolean getExpanded() {
-        return isExpanded;
+    public int getProjectID() {
+        return projectID;
     }
 
-    public void setExpanded(Boolean expanded) {
-        isExpanded = expanded;
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
     }
+
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
     public String getTitle() {
         return Title;
     }
@@ -63,5 +79,13 @@ public class Project {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Boolean getExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(Boolean expanded) {
+        isExpanded = expanded;
     }
 }
