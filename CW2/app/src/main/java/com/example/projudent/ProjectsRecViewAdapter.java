@@ -1,6 +1,9 @@
 package com.example.projudent;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -54,6 +63,37 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                 notifyItemChanged(position);
             }
         });
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Are you sure you want to delete this project?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                deletePJ(projects.get(position).getProjectID());
+                                Intent intent = new Intent(context.getApplicationContext(),welcome.class);
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+
+            }
+        });
         if (projects.get(position).getExpanded()){
             TransitionManager.beginDelayedTransition(holder.parent);
             holder.hiddenRL.setVisibility(View.VISIBLE);
@@ -89,7 +129,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
         private ImageView ivThumbnail;
         private RelativeLayout hiddenRL;
         private ImageView down,up;
-
+        private TextView btnDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,7 +141,33 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
             hiddenRL = itemView.findViewById(R.id.hiddenRL);
             down = itemView.findViewById(R.id.btnDownArrow);
             up = itemView.findViewById(R.id.btnUpArrow);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
+    }
+
+    public void deletePJ(int ID){
+        String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(ID);
+
+
+        RequestQueue queue = Volley.newRequestQueue(context.getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.DELETE, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Toast.makeText(context.getApplicationContext(),"Project deleted.",Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context.getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        queue.add(request);
     }
 }
 

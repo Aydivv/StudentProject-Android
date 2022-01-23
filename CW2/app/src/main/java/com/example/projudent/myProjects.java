@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class myProjects extends AppCompatActivity {
     private TextView myPJs;
     private User user;
     private ArrayList<Project> currentProjects;
+    private ProgressBar pb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +39,11 @@ public class myProjects extends AppCompatActivity {
         user = (User)getIntent().getSerializableExtra("User");
         projectsRV = findViewById(R.id.rvProjects);
         myPJs = findViewById(R.id.tvMyPJ);
+        pb = findViewById(R.id.pbPJ);
         currentProjects = new ArrayList<Project>();
         ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this);
 
-
+        pb.setVisibility(View.VISIBLE);
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -75,6 +78,7 @@ public class myProjects extends AppCompatActivity {
                     }
 
                 }
+                pb.setVisibility(View.GONE);
                 projectsRV.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -106,6 +110,7 @@ public class myProjects extends AppCompatActivity {
 
     public void toAddPJ(View view) {
         Intent intent = new Intent(this, addProject.class);
+        intent.putExtra("User",user);
         startActivity(intent);
     }
 }
