@@ -32,9 +32,11 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
 
     private ArrayList<Project> projects = new ArrayList<>();
     private Context context;
+    private User user;
 
-    public ProjectsRecViewAdapter(Context context) {
+    public ProjectsRecViewAdapter(Context context, User usr) {
         this.context = context;
+        user = usr;
     }
 
     @NonNull
@@ -78,6 +80,8 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                             public void onClick(DialogInterface dialog, int id) {
                                 deletePJ(projects.get(position).getProjectID());
                                 Intent intent = new Intent(context.getApplicationContext(),welcome.class);
+                                intent.putExtra("User",user);
+                                context.startActivity(intent);
                             }
                         });
 

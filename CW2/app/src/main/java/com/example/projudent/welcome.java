@@ -15,6 +15,7 @@ public class welcome extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         user = (User)getIntent().getSerializableExtra("User");
+
         tvName = findViewById(R.id.tvName);
         tvName.setText(user.getFirst_Name());
     }

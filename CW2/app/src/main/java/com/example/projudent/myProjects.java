@@ -41,7 +41,7 @@ public class myProjects extends AppCompatActivity {
         myPJs = findViewById(R.id.tvMyPJ);
         pb = findViewById(R.id.pbPJ);
         currentProjects = new ArrayList<Project>();
-        ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this);
+        ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this,user);
 
         pb.setVisibility(View.VISIBLE);
         RequestQueue queue = Volley.newRequestQueue(this);
