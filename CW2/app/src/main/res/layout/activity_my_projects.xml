@@ -31,6 +31,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMyPJ"
         android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPJ"
+        android:fontFamily="@font/roboto_medium"
+        android:text="You have no projects."
+        android:textColor="@color/primary"
+        android:textSize="27sp"
+        android:gravity="center"
+        android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/rvProjects"

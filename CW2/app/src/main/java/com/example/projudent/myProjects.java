@@ -29,6 +29,7 @@ import java.util.ArrayList;
 public class myProjects extends AppCompatActivity {
     private RecyclerView projectsRV;
     private TextView myPJs;
+    private TextView tvEmpty;
     private User user;
     private ArrayList<Project> currentProjects;
     private ProgressBar pb;
@@ -40,6 +41,7 @@ public class myProjects extends AppCompatActivity {
         projectsRV = findViewById(R.id.rvProjects);
         myPJs = findViewById(R.id.tvMyPJ);
         pb = findViewById(R.id.pbPJ);
+        tvEmpty = findViewById(R.id.tvEmpty);
         currentProjects = new ArrayList<Project>();
         ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this,user);
 
@@ -91,8 +93,6 @@ public class myProjects extends AppCompatActivity {
         queue.add(jsonArrayRequest);
         adapter.setProjects(currentProjects);
         projectsRV.setLayoutManager(new LinearLayoutManager(this));
-
-
 
     }
 

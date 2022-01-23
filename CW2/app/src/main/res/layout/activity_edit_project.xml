@@ -8,12 +8,12 @@
     tools:context=".addProject">
 
     <TextView
-        android:id="@+id/tvAddPJ"
+        android:id="@+id/tvEditPJ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="NEW PROJECT"
+        android:text="EDIT PROJECT"
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -23,18 +23,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvTitleEPJ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="Title"
         android:textColor="@color/black"
         android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/etTitle"
-        app:layout_constraintStart_toStartOf="@+id/etTitle" />
+        app:layout_constraintBottom_toTopOf="@+id/etTitleEPJ"
+        app:layout_constraintStart_toStartOf="@+id/etTitleEPJ" />
 
     <EditText
-        android:id="@+id/etTitle"
+        android:id="@+id/etTitleEPJ"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
@@ -48,85 +48,67 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddPJ" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEditPJ" />
 
     <TextView
-        android:id="@+id/tvYear"
+        android:id="@+id/tvYearEPJ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="Year"
         android:textColor="@color/black"
         android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/etYear"
-        app:layout_constraintStart_toStartOf="@+id/etYear" />
+        app:layout_constraintBottom_toTopOf="@+id/etYearEPJ"
+        app:layout_constraintStart_toStartOf="@+id/etYearEPJ" />
 
     <EditText
-        android:id="@+id/etYear"
+        android:id="@+id/etYearEPJ"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-
         android:inputType="number"
+
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/etTitleEPJ"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/tvDescriptionEPJ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="Description"
         android:textColor="@color/black"
         android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/etDescription"
-        app:layout_constraintStart_toStartOf="@+id/etDescription" />
+        app:layout_constraintBottom_toTopOf="@+id/etDescriptionEPJ"
+        app:layout_constraintStart_toStartOf="@+id/etDescriptionEPJ" />
 
     <EditText
-        android:id="@+id/etDescription"
+        android:id="@+id/etDescriptionEPJ"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:lines="12"
         android:inputType="textMultiLine"
+        android:lines="12"
         android:paddingHorizontal="20dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etYear" />
+        app:layout_constraintTop_toBottomOf="@+id/etYearEPJ"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
-        android:id="@+id/etUpload"
-        android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
-        android:layout_height="46dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/hollow_rounded_orange"
-        android:fontFamily="@font/roboto_medium"
-        android:gravity="center"
-        android:text="Upload Thumbnail"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="5dp"
-        android:textColor="#BEBCBB"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
-
-    <TextView
-        android:id="@+id/btnAddPJ"
+        android:id="@+id/btnEditPJ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/blackroundedcorner"
@@ -134,7 +116,7 @@
         android:onClick="toWelcome"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
-        android:text="Add Project"
+        android:text="Edit Project"
         android:textColor="@color/white"
         android:textSize="23sp"
         android:textStyle="bold"
@@ -142,8 +124,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUpload"
-        app:layout_constraintVertical_bias="0.53" />
+        app:layout_constraintTop_toBottomOf="@+id/etDescriptionEPJ"
+        app:layout_constraintVertical_bias="0.335" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

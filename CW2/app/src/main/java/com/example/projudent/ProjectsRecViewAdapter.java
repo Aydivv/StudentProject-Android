@@ -70,11 +70,11 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Are you sure you want to delete this project?");
-                builder1.setCancelable(true);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Are you sure you want to delete this project?");
+                builder.setCancelable(true);
 
-                builder1.setPositiveButton(
+                builder.setPositiveButton(
                         "Yes",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -85,7 +85,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                             }
                         });
 
-                builder1.setNegativeButton(
+                builder.setNegativeButton(
                         "No",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -93,9 +93,19 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                             }
                         });
 
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+                AlertDialog alert = builder.create();
+                alert.show();
 
+            }
+        });
+
+        holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context.getApplicationContext(),editProject.class);
+                intent.putExtra("User",user);
+                intent.putExtra("ID",String.valueOf(projects.get(position).getProjectID()));
+                context.startActivity(intent);
             }
         });
         if (projects.get(position).getExpanded()){
@@ -134,6 +144,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
         private RelativeLayout hiddenRL;
         private ImageView down,up;
         private TextView btnDelete;
+        private TextView btnEdit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -146,6 +157,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
             down = itemView.findViewById(R.id.btnDownArrow);
             up = itemView.findViewById(R.id.btnUpArrow);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+            btnEdit = itemView.findViewById(R.id.btnEdit);
         }
     }
 
