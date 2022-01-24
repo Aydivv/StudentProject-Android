@@ -27,8 +27,9 @@ public class welcome extends AppCompatActivity{
         overridePendingTransition(R.anim.right_slide_in,R.anim.right_slide_out);
     }
 
-    public void toLogin(View view) {
-        Intent intent = new Intent(this,MainActivity.class);
+    public void toPreferences(View view) {
+        Intent intent = new Intent(welcome.this,Preferences.class);
+        intent.putExtra("User",user);
         startActivity(intent);
     }
 }

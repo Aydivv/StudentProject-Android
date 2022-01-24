@@ -1,18 +1,27 @@
 package com.example.projudent;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable {
     private int studentID;
     private String First_Name;
     private String Last_Name;
-    private String Password;
+    private int Password;
+    private ArrayList<Boolean> prefs;
 
-    public User(int studentID, String first_Name, String last_Name, String password) {
+    public User(int studentID, String first_Name, String last_Name, @NonNull String password) {
         this.studentID = studentID;
         First_Name = first_Name;
         Last_Name = last_Name;
-        Password = password;
+        Password = password.hashCode();
+        prefs = new ArrayList<Boolean>();
+        prefs.add(true);
+        prefs.add(true);
+        prefs.add(true);
+
     }
 
     @Override
@@ -23,6 +32,14 @@ public class User implements Serializable {
                 ", Last_Name='" + Last_Name + '\'' +
                 ", Password='" + Password + '\'' +
                 '}';
+    }
+
+    public ArrayList<Boolean> getPrefs() {
+        return prefs;
+    }
+
+    public void setPrefs(ArrayList<Boolean> prefs) {
+        this.prefs = prefs;
     }
 
     public int getStudentID() {
@@ -37,7 +54,7 @@ public class User implements Serializable {
         return Last_Name;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return Password;
     }
 }

@@ -86,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
             );
             String user;
             while ((user = reader.readLine()) != null) {
+                int p = pword.hashCode();
                 String[] tokens = user.split(",");
                 IDs.add(Integer.parseInt(tokens[0]));
-                if((Integer.parseInt(tokens[0])==ID) && (tokens[1].equals(pword))){
+                if((Integer.parseInt(tokens[0])==ID) && (Integer.parseInt(tokens[1])==p)){
                     value = true;
                 }
 

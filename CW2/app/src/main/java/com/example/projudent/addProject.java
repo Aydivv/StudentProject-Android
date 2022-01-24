@@ -2,11 +2,17 @@ package com.example.projudent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.provider.MediaStore;
@@ -49,6 +55,8 @@ public class addProject extends AppCompatActivity {
     private boolean selected = false;
     private String filepath = "";
     private Uri img;
+    NotificationManagerCompat nMC;
+    Notification reminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +66,11 @@ public class addProject extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etYear = findViewById(R.id.etYear);
         etDescription = findViewById(R.id.etDescription);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel nChannel = new NotificationChannel("ch1", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manage = getSystemService(NotificationManager.class);
+            manage.createNotificationChannel(nChannel);
+        }
     }
 
     public void toWelcome(View view) {
@@ -120,7 +133,7 @@ public class addProject extends AppCompatActivity {
                             pjID = response.getJSONObject(i).getInt("projectID");
                             if(selected)
                                 new uploadimage().execute(img,pjID);
-                            break;
+
                         }
                     }
                 } catch (JSONException e) {

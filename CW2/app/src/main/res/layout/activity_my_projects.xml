@@ -93,12 +93,12 @@
             android:layout_marginEnd="15dp"
             android:background="@drawable/whiteborderwhitefill"
             android:fontFamily="@font/roboto_medium"
+            android:onClick="toAddPJ"
             android:paddingHorizontal="15sp"
             android:paddingVertical="5dp"
             android:text="Add Project"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:onClick="toAddPJ"/>
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

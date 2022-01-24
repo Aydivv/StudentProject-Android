@@ -75,11 +75,11 @@ public class createAccount extends AppCompatActivity {
 
     public void createUser(int ID,String pword,String fname,String lname){
         try {
-
+            int p = pword.hashCode();
             FileOutputStream fop = openFileOutput("users.txt",Context.MODE_APPEND);
-            fop.write((String.valueOf(ID) + "," + pword + "," + fname + "," + lname + "\n").getBytes(StandardCharsets.UTF_8));
+            fop.write((String.valueOf(ID) + "," + String.valueOf(p) + "," + fname + "," + lname + "\n").getBytes(StandardCharsets.UTF_8));
             fop.close();
-            Toast.makeText(createAccount.this,String.valueOf(ID) + "," + pword + "," + fname + "," + lname + "Saved to users.txt.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(createAccount.this,String.valueOf(ID) + "," + String.valueOf(p) + "," + fname + "," + lname + "Saved to users.txt.",Toast.LENGTH_SHORT).show();
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
