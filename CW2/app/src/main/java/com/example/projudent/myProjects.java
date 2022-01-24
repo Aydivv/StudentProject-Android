@@ -104,6 +104,7 @@ public class myProjects extends AppCompatActivity {
 
     public void toWelcome(View view) {
         Intent intent = new Intent(this, welcome.class);
+        intent.putExtra("User",user);
         startActivity(intent);
         overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
     }

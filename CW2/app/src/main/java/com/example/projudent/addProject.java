@@ -8,23 +8,30 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class addProject extends AppCompatActivity {
     private User user;
     private EditText etTitle;
     private EditText etYear;
     private EditText etDescription;
+    private int pjID;
+    public int SELECT_IMAGE_CODE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +88,48 @@ public class addProject extends AppCompatActivity {
             }
         });
         queue.add(request_json);
+
+        getprojectnumber();
     }
 
+    private void getprojectnumber() {
+        RequestQueue queue = Volley.newRequestQueue(addProject.this);
+        final String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students";
+        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for(int i=0; i<response.length();i++){
+                        if(response.getJSONObject(i).getInt("studentID") == user.getStudentID()){
+                            pjID = response.getJSONObject(i).getInt("projectID");
+                            break;
+                        }
+                    }
+                } catch (JSONException e){
+                    Toast.makeText(addProject.this,"parsing error",Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(addProject.this,"volley error",Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(req);
+        uploadimage();
+    }
+
+    private void uploadimage() {
+        final String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(pjID) + "/image";
+
+
+    }
+
+
+    public void selectPicture(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Title"), SELECT_IMAGE_CODE);
+    }
 }
