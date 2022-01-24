@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Projudent</string>
     <string name="welcometext">WELCOME BACK</string>
+    <string name="imageadd">Image has been added</string>
 </resources>

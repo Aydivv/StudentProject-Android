@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.provider.MediaStore;
@@ -27,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +45,7 @@ public class addProject extends AppCompatActivity {
     private EditText etTitle;
     private EditText etYear;
     private EditText etDescription;
-    private int pjID;
+    private int pjID = 0;
     private boolean selected = false;
     private String filepath = "";
     private Uri img;
@@ -68,9 +70,11 @@ public class addProject extends AppCompatActivity {
             etDescription.setError("Enter Description");
         } else {
             addProject();
-            Intent intent = new Intent(this, welcome.class);
-            intent.putExtra("User", user);
-            startActivity(intent);
+            if(!selected) {
+                Intent intent = new Intent(this, welcome.class);
+                intent.putExtra("User", user);
+                startActivity(intent);
+            }
         }
 
     }
@@ -114,6 +118,8 @@ public class addProject extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         if (response.getJSONObject(i).getInt("studentID") == user.getStudentID()) {
                             pjID = response.getJSONObject(i).getInt("projectID");
+                            if(selected)
+                                new uploadimage().execute(img,pjID);
                             break;
                         }
                     }
@@ -128,51 +134,63 @@ public class addProject extends AppCompatActivity {
             }
         });
         q.add(req);
-
-        if (selected)
-            uploadimage();
-
     }
 
 
-    private void uploadimage() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int id = 0;
+    private class uploadimage extends AsyncTask<Object,String,String> {
+        private String result;
+        @Override
+        protected String doInBackground(Object...params) {
+            Uri image =(Uri) params[0];
+            int ID = (int) params[1];
+            final String URL = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(ID) + "/";
+
+            File file = new File(getPath(image));
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
 
 
-                final String URL = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(pjID) + "/";
-                Retrofit retrofit = NetworkClient.getRetrofit(URL);
-                File file = new File(getPath(img));
-                RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-                MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+            Retrofit retrofit = NetworkClient.getRetrofit(URL);
+            upload upload = retrofit.create(upload.class);
+            Call call = upload.uploadImage(part);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, retrofit2.Response response) {
+                    result = response.toString();
+                }
 
-                upload upload = retrofit.create(upload.class);
-                Call call = upload.uploadImage(part);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, retrofit2.Response response) {
-                        Toast.makeText(addProject.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
-                    }
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    result = t.toString();
+                }
+            });
+            return result;
+        }
 
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        Toast.makeText(addProject.this, t.toString(), Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }).start();
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
 
-
-
+;           Intent intent = new Intent(addProject.this, welcome.class);
+            intent.putExtra("User", user);
+            startActivity(intent);
+        }
+        public String getPath(Uri uri)
+        {
+            String[] projection = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+            if (cursor == null) return null;
+            int column_index =             cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String s=cursor.getString(column_index);
+            cursor.close();
+            return s;
+        }
     }
 
 
     public void selectPicture(View view) {
-
-
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 3);
     }
@@ -186,16 +204,6 @@ public class addProject extends AppCompatActivity {
             selected = true;
         }
     }
-    public String getPath(Uri uri)
-    {
-        String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-        if (cursor == null) return null;
-        int column_index =             cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String s=cursor.getString(column_index);
-        cursor.close();
-        return s;
-    }
+
 
 }
