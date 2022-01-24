@@ -3,7 +3,9 @@
     package="com.example.projudent">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,22 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".editProject"
             android:exported="true" />
+
         <activity
             android:name=".addProject"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".myProjects"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".welcome"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".createAccount"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

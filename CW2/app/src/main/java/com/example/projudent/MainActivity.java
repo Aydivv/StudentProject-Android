@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.opencsv.CSVReader;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

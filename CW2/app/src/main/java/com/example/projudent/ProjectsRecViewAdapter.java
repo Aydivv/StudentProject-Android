@@ -79,7 +79,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 deletePJ(projects.get(position).getProjectID());
-                                Intent intent = new Intent(context.getApplicationContext(),welcome.class);
+                                Intent intent = new Intent(context.getApplicationContext(),myProjects.class);
                                 intent.putExtra("User",user);
                                 context.startActivity(intent);
                             }

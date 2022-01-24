@@ -1,9 +1,14 @@
 package com.example.projudent;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.FileUtils;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,8 +26,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.http.Multipart;
 
 public class addProject extends AppCompatActivity {
     private User user;
@@ -30,13 +44,15 @@ public class addProject extends AppCompatActivity {
     private EditText etYear;
     private EditText etDescription;
     private int pjID;
-    public int SELECT_IMAGE_CODE;
+    private boolean selected = false;
+    private String filepath = "";
+    private Uri img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_project);
-        user = (User)getIntent().getSerializableExtra("User");
+        user = (User) getIntent().getSerializableExtra("User");
         etTitle = findViewById(R.id.etTitle);
         etYear = findViewById(R.id.etYear);
         etDescription = findViewById(R.id.etDescription);
@@ -48,18 +64,18 @@ public class addProject extends AppCompatActivity {
             etTitle.setError("Enter Title");
         } else if (etYear.length() == 0) {
             etYear.setError("Enter Year");
-        } else if (etDescription.length() == 0){
+        } else if (etDescription.length() == 0) {
             etDescription.setError("Enter Description");
-        } else{
+        } else {
             addProject();
-            Intent intent = new Intent(this,welcome.class);
-            intent.putExtra("User",user);
+            Intent intent = new Intent(this, welcome.class);
+            intent.putExtra("User", user);
             startActivity(intent);
         }
 
     }
 
-    public void addProject(){
+    public void addProject() {
         RequestQueue queue = Volley.newRequestQueue(this);
         final String URL = "http://web.socem.plymouth.ac.uk/COMP2000/api/students";
         // Post params to be sent to the server
@@ -76,7 +92,7 @@ public class addProject extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Toast.makeText(addProject.this,"Project added.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(addProject.this, "Project added.", Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -89,47 +105,97 @@ public class addProject extends AppCompatActivity {
         });
         queue.add(request_json);
 
-        getprojectnumber();
-    }
-
-    private void getprojectnumber() {
-        RequestQueue queue = Volley.newRequestQueue(addProject.this);
+        RequestQueue q = Volley.newRequestQueue(addProject.this);
         final String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students";
         JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    for(int i=0; i<response.length();i++){
-                        if(response.getJSONObject(i).getInt("studentID") == user.getStudentID()){
+                    for (int i = 0; i < response.length(); i++) {
+                        if (response.getJSONObject(i).getInt("studentID") == user.getStudentID()) {
                             pjID = response.getJSONObject(i).getInt("projectID");
                             break;
                         }
                     }
-                } catch (JSONException e){
-                    Toast.makeText(addProject.this,"parsing error",Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    Toast.makeText(addProject.this, "parsing error", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(addProject.this,"volley error",Toast.LENGTH_SHORT).show();
+                Toast.makeText(addProject.this, "volley error", Toast.LENGTH_SHORT).show();
             }
         });
-        queue.add(req);
-        uploadimage();
+        q.add(req);
+
+        if (selected)
+            uploadimage();
+
     }
 
+
     private void uploadimage() {
-        final String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(pjID) + "/image";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int id = 0;
+
+
+
+                final String URL = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(pjID) + "/";
+                Retrofit retrofit = NetworkClient.getRetrofit(URL);
+                File file = new File(getPath(img));
+                RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
+                MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+                upload upload = retrofit.create(upload.class);
+                Call call = upload.uploadImage(part);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call call, retrofit2.Response response) {
+                        Toast.makeText(addProject.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+                        Toast.makeText(addProject.this, t.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }).start();
+
 
 
     }
 
 
     public void selectPicture(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Title"), SELECT_IMAGE_CODE);
+
+
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, 3);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            img = data.getData();
+            filepath = img.getPath();
+            selected = true;
+        }
+    }
+    public String getPath(Uri uri)
+    {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor == null) return null;
+        int column_index =             cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String s=cursor.getString(column_index);
+        cursor.close();
+        return s;
+    }
+
 }
