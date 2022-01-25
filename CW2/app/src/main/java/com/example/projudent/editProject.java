@@ -1,8 +1,14 @@
 package com.example.projudent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +34,8 @@ public class editProject extends AppCompatActivity {
     private EditText etTitle;
     private EditText etYear;
     private EditText etDesc;
+    NotificationManagerCompat nMC;
+    Notification reminder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,11 @@ public class editProject extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitleEPJ);
         etYear = findViewById(R.id.etYearEPJ);
         etDesc = findViewById(R.id.etDescriptionEPJ);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel nChannel = new NotificationChannel("ch1", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manage = getSystemService(NotificationManager.class);
+            manage.createNotificationChannel(nChannel);
+        }
     }
 
     public void toWelcome(View view){
@@ -48,6 +61,19 @@ public class editProject extends AppCompatActivity {
             etDesc.setError("Enter Description");
         } else {
             editProject(ID);
+
+            if(user.getPrefs().get(2)) {
+                NotificationCompat.Builder notif = new NotificationCompat.Builder(editProject.this, "ch1")
+                        .setSmallIcon(android.R.drawable.stat_notify_sync)
+                        .setContentTitle("Project Edited!")
+                        .setContentText("Project "+etTitle.getText().toString()+" has been edited!");
+
+                nMC = NotificationManagerCompat.from(editProject.this);
+                reminder = notif.build();
+                nMC.notify(1, reminder);
+            }
+
+
             Intent intent = new Intent(this, myProjects.class);
             intent.putExtra("User", user);
             startActivity(intent);

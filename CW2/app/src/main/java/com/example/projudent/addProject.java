@@ -131,9 +131,24 @@ public class addProject extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         if (response.getJSONObject(i).getInt("studentID") == user.getStudentID()) {
                             pjID = response.getJSONObject(i).getInt("projectID");
+
+
+                            if(user.getPrefs().get(0)) {
+                                NotificationCompat.Builder notif = new NotificationCompat.Builder(addProject.this, "ch1")
+                                        .setSmallIcon(android.R.drawable.stat_notify_sync)
+                                        .setContentTitle("Project Created!")
+                                        .setContentText("Project "+etTitle.getText().toString()+" has been uploaded with Project ID " + String.valueOf(pjID) + ".");
+
+                                nMC = NotificationManagerCompat.from(addProject.this);
+                                reminder = notif.build();
+                                nMC.notify(1, reminder);
+                            }
+
                             if(selected)
                                 new uploadimage().execute(img,pjID);
 
+
+                            break;
                         }
                     }
                 } catch (JSONException e) {
@@ -184,10 +199,10 @@ public class addProject extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
-;           Intent intent = new Intent(addProject.this, welcome.class);
+            Intent intent = new Intent(addProject.this, welcome.class);
             intent.putExtra("User", user);
             startActivity(intent);
+;
         }
         public String getPath(Uri uri)
         {

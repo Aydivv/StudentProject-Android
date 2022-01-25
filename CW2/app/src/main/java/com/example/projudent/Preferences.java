@@ -21,18 +21,43 @@ public class Preferences extends AppCompatActivity {
         setContentView(R.layout.activity_preferences);
         user = (User) getIntent().getSerializableExtra("User");
         prefs = user.getPrefs();
-    }
-
-    public void toWelcome(View view) {
         create = findViewById(R.id.cbCreate);
         delete = findViewById(R.id.cbDelete);
         edit = findViewById(R.id.cbEdit);
-        if(create.isChecked())
-            prefs.set(0,true);
-        if(delete.isChecked())
-            prefs.set(1,true);
-        if(edit.isChecked())
-            prefs.set(2,true);
+
+
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(create.isChecked())
+                    prefs.set(0,true);
+                else
+                    prefs.set(0,false);
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(create.isChecked())
+                    prefs.set(1,true);
+                else
+                    prefs.set(1,false);
+            }
+        });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(create.isChecked())
+                    prefs.set(2,true);
+                else
+                    prefs.set(2,false);
+            }
+        });
+    }
+
+    public void toWelcome(View view) {
+
+
         user.setPrefs(prefs);
         Intent intent = new Intent(Preferences.this,welcome.class);
         intent.putExtra("User",user);

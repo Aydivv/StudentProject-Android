@@ -1,6 +1,7 @@
 package com.example.projudent;
 
 import android.app.AlertDialog;
+import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
@@ -33,10 +36,13 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
     private ArrayList<Project> projects = new ArrayList<>();
     private Context context;
     private User user;
+    NotificationManagerCompat nMC;
+    Notification reminder;
 
     public ProjectsRecViewAdapter(Context context, User usr) {
         this.context = context;
         user = usr;
+
     }
 
     @NonNull
@@ -79,6 +85,18 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 deletePJ(projects.get(position).getProjectID());
+
+                                if(user.getPrefs().get(1)) {
+                                    NotificationCompat.Builder notif = new NotificationCompat.Builder(context, "ch1")
+                                            .setSmallIcon(android.R.drawable.stat_notify_sync)
+                                            .setContentTitle("Project Deleted!")
+                                            .setContentText("Project "+projects.get(position).getTitle()+" has been deleted!");
+
+                                    nMC = NotificationManagerCompat.from(context);
+                                    reminder = notif.build();       
+                                    nMC.notify(1, reminder);
+                                }
+
                                 Intent intent = new Intent(context.getApplicationContext(),myProjects.class);
                                 intent.putExtra("User",user);
                                 context.startActivity(intent);
