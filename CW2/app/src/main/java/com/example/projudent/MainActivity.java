@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView btnLogin;
     private User user;
     private ArrayList<Integer> IDs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,20 +38,18 @@ public class MainActivity extends AppCompatActivity {
     public void toRegister(View view) {
         Intent intent = new Intent(this, createAccount.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.right_slide_in,R.anim.right_slide_out);
+        overridePendingTransition(R.anim.right_slide_in, R.anim.right_slide_out);
     }
 
     public void toWelcome(View view) {
         boolean login = false;
         loginID = findViewById(R.id.etStudentID);
         loginPassword = findViewById(R.id.etPassword);
-        if(loginID.length()==0){
+        if (loginID.length() == 0) {
             loginID.setError("Enter StudentID");
-        }
-        else if(loginPassword.length()==0){
+        } else if (loginPassword.length() == 0) {
             loginPassword.setError("Enter Password");
-        }
-        else {
+        } else {
             int ID = Integer.parseInt(loginID.getText().toString());
             String pword = loginPassword.getText().toString();
             login = checkLogin(ID, pword);
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             if (login) {
                 Toast.makeText(this, "Logged in.", Toast.LENGTH_SHORT).show();
                 ArrayList<String> names = getNames(ID);
-                user = new User(ID, names.get(0),names.get(1), pword);
+                user = new User(ID, names.get(0), names.get(1), pword);
                 Intent intent = new Intent(this, welcome.class);
                 intent.putExtra("User", user);
                 startActivity(intent);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean checkLogin(int ID, String pword){
+    public boolean checkLogin(int ID, String pword) {
         boolean value = false;
         try {
             FileInputStream is = openFileInput("users.txt");
@@ -89,40 +88,40 @@ public class MainActivity extends AppCompatActivity {
                 int p = pword.hashCode();
                 String[] tokens = user.split(",");
                 IDs.add(Integer.parseInt(tokens[0]));
-                if((Integer.parseInt(tokens[0])==ID) && (Integer.parseInt(tokens[1])==p)){
+                if ((Integer.parseInt(tokens[0]) == ID) && (Integer.parseInt(tokens[1]) == p)) {
                     value = true;
                 }
 
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this,"error reading file",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "error reading file", Toast.LENGTH_SHORT).show();
         }
 
         return value;
     }
 
-    public ArrayList<String> getNames(int ID){
+    public ArrayList<String> getNames(int ID) {
         ArrayList<String> names = new ArrayList<>();
         try {
             FileInputStream is = openFileInput("users.txt");
             BufferedReader reader = new BufferedReader(
-                new InputStreamReader(is, StandardCharsets.UTF_8)
-        );
-        String user;
+                    new InputStreamReader(is, StandardCharsets.UTF_8)
+            );
+            String user;
 
             while ((user = reader.readLine()) != null) {
                 String[] tokens = user.split(",");
-                if(Integer.parseInt(tokens[0])==ID){
+                if (Integer.parseInt(tokens[0]) == ID) {
                     names.add(tokens[2]);
                     names.add(tokens[3]);
                     return names;
                 }
 
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this,"error reading file",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "error reading file", Toast.LENGTH_SHORT).show();
         }
         return names;
     }

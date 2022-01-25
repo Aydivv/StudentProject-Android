@@ -36,12 +36,13 @@ public class editProject extends AppCompatActivity {
     private EditText etDesc;
     NotificationManagerCompat nMC;
     Notification reminder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_project);
-        user = (User)getIntent().getSerializableExtra("User");
-        ID = (String)getIntent().getStringExtra("ID");
+        user = (User) getIntent().getSerializableExtra("User");
+        ID = (String) getIntent().getStringExtra("ID");
         etTitle = findViewById(R.id.etTitleEPJ);
         etYear = findViewById(R.id.etYearEPJ);
         etDesc = findViewById(R.id.etDescriptionEPJ);
@@ -53,26 +54,26 @@ public class editProject extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent intent = new Intent(editProject.this,myProjects.class);
-        intent.putExtra("User",user);
+        Intent intent = new Intent(editProject.this, myProjects.class);
+        intent.putExtra("User", user);
         startActivity(intent);
     }
 
-    public void toWelcome(View view){
+    public void toWelcome(View view) {
         if (etTitle.length() == 0) {
             etTitle.setError("Enter Title");
         } else if (etYear.length() == 0) {
             etYear.setError("Enter Year");
-        } else if (etDesc.length() == 0){
+        } else if (etDesc.length() == 0) {
             etDesc.setError("Enter Description");
         } else {
             editProject(ID);
 
-            if(user.getPrefs().get(2)) {
+            if (user.getPrefs().get(2)) {
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(editProject.this, "ch1")
                         .setSmallIcon(android.R.drawable.stat_notify_sync)
                         .setContentTitle("Project Edited!")
-                        .setContentText("Project "+etTitle.getText().toString()+" has been edited!");
+                        .setContentText("Project " + etTitle.getText().toString() + " has been edited!");
 
                 nMC = NotificationManagerCompat.from(editProject.this);
                 reminder = notif.build();
@@ -86,7 +87,7 @@ public class editProject extends AppCompatActivity {
         }
     }
 
-    public void editProject(String eID){
+    public void editProject(String eID) {
         RequestQueue queue = Volley.newRequestQueue(this);
         final String URL = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + eID;
 
@@ -101,13 +102,13 @@ public class editProject extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(editProject.this,"Project has been edited.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(editProject.this, "Project has been edited.", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(editProject.this,"Project has been edited.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(editProject.this, "Project has been edited.", Toast.LENGTH_SHORT).show();
                     }
                 });
         queue.add(request);

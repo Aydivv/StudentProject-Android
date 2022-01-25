@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/backbutton"
@@ -22,20 +22,20 @@
             android:layout_marginTop="44dp"
             android:layout_marginEnd="20dp"
             android:layout_toLeftOf="@id/tvEditPJi"
-            android:src="@drawable/backbutton"
-            android:onClick="back"/>
+            android:onClick="back"
+            android:src="@drawable/backbutton" />
 
         <TextView
             android:id="@+id/tvEditPJi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Add Project"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp"
             android:background="@drawable/primaryborderblackfill"
-            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
             android:paddingHorizontal="20dp"
+            android:text="Add Project"
+            android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold" />
 
@@ -55,7 +55,6 @@
     <EditText
         android:id="@+id/etTitle"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="72dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -67,7 +66,8 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAddPJ" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAddPJ"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvYear"
@@ -83,20 +83,20 @@
     <EditText
         android:id="@+id/etYear"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-
         android:inputType="number"
+
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/etTitle"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -112,39 +112,39 @@
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="top"
-        android:lines="12"
         android:inputType="textMultiLine"
+        android:lines="12"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etYear" />
+        app:layout_constraintTop_toBottomOf="@+id/etYear"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/etUpload"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:text="Upload Thumbnail"
+        android:onClick="selectPicture"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
+        android:text="Upload Thumbnail"
         android:textColor="#BEBCBB"
         android:textSize="18sp"
-        android:onClick="selectPicture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/etDescription"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/btnAddPJ"

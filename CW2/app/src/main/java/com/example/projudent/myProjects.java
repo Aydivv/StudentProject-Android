@@ -33,17 +33,18 @@ public class myProjects extends AppCompatActivity {
     private User user;
     private ArrayList<Project> currentProjects;
     private ProgressBar pb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_projects);
-        user = (User)getIntent().getSerializableExtra("User");
+        user = (User) getIntent().getSerializableExtra("User");
         projectsRV = findViewById(R.id.rvProjects);
         myPJs = findViewById(R.id.tvMyPJ);
         pb = findViewById(R.id.pbPJ);
         tvEmpty = findViewById(R.id.tvEmpty);
         currentProjects = new ArrayList<Project>();
-        ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this,user);
+        ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this, user);
 
         pb.setVisibility(View.VISIBLE);
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -51,17 +52,17 @@ public class myProjects extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                for(int i=0; i<response.length();i++){
+                for (int i = 0; i < response.length(); i++) {
                     try {
                         boolean exists = false;
-                        for(int j=0;j<currentProjects.size();j++){
-                            if(response.getJSONObject(i).getInt("projectID")==currentProjects.get(j).getProjectID())
+                        for (int j = 0; j < currentProjects.size(); j++) {
+                            if (response.getJSONObject(i).getInt("projectID") == currentProjects.get(j).getProjectID())
                                 exists = true;
                         }
-                        if(exists)
+                        if (exists)
                             continue;
                         int ID = response.getJSONObject(i).getInt("studentID");
-                        if(ID == user.getStudentID()){
+                        if (ID == user.getStudentID()) {
                             JSONObject currentProject = response.getJSONObject(i);
                             int projectID = currentProject.getInt("projectID");
                             int studentID = currentProject.getInt("studentID");
@@ -70,7 +71,7 @@ public class myProjects extends AppCompatActivity {
                             int year = currentProject.getInt("year");
                             String photo = currentProject.getString("photo");
 
-                            currentProjects.add(new Project(projectID,studentID,title,desc,year,photo));
+                            currentProjects.add(new Project(projectID, studentID, title, desc, year, photo));
 
                         }
 
@@ -99,27 +100,27 @@ public class myProjects extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
+        overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
     }
 
     public void toWelcome(View view) {
         Intent intent = new Intent(this, welcome.class);
-        intent.putExtra("User",user);
+        intent.putExtra("User", user);
         startActivity(intent);
-        overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
+        overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
     }
 
     public void toAddPJ(View view) {
         Intent intent = new Intent(this, addProject.class);
-        intent.putExtra("User",user);
+        intent.putExtra("User", user);
         startActivity(intent);
     }
 
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, welcome.class);
-        intent.putExtra("User",user);
+        intent.putExtra("User", user);
         startActivity(intent);
-        overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
+        overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
     }
 }

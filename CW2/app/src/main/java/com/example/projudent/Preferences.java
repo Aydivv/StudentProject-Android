@@ -14,7 +14,8 @@ import java.util.ArrayList;
 public class Preferences extends AppCompatActivity {
     private User user;
     private ArrayList<Boolean> prefs;
-    private CheckBox create,delete,edit;
+    private CheckBox create, delete, edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,28 +30,28 @@ public class Preferences extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(create.isChecked())
-                    prefs.set(0,true);
+                if (create.isChecked())
+                    prefs.set(0, true);
                 else
-                    prefs.set(0,false);
+                    prefs.set(0, false);
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(create.isChecked())
-                    prefs.set(1,true);
+                if (create.isChecked())
+                    prefs.set(1, true);
                 else
-                    prefs.set(1,false);
+                    prefs.set(1, false);
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(create.isChecked())
-                    prefs.set(2,true);
+                if (create.isChecked())
+                    prefs.set(2, true);
                 else
-                    prefs.set(2,false);
+                    prefs.set(2, false);
             }
         });
     }
@@ -63,8 +64,8 @@ public class Preferences extends AppCompatActivity {
 
 
         user.setPrefs(prefs);
-        Intent intent = new Intent(Preferences.this,welcome.class);
-        intent.putExtra("User",user);
+        Intent intent = new Intent(Preferences.this, welcome.class);
+        intent.putExtra("User", user);
         startActivity(intent);
     }
 
@@ -77,7 +78,7 @@ public class Preferences extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(Preferences.this,MainActivity.class);
+                        Intent intent = new Intent(Preferences.this, MainActivity.class);
                         startActivity(intent);
                     }
                 });

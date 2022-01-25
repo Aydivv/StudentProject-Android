@@ -87,7 +87,7 @@ public class addProject extends AppCompatActivity {
             etDescription.setError("Enter Description");
         } else {
             addProject();
-            if(!selected) {
+            if (!selected) {
                 Intent intent = new Intent(this, welcome.class);
                 intent.putExtra("User", user);
                 startActivity(intent);
@@ -137,19 +137,19 @@ public class addProject extends AppCompatActivity {
                             pjID = response.getJSONObject(i).getInt("projectID");
 
 
-                            if(user.getPrefs().get(0)) {
+                            if (user.getPrefs().get(0)) {
                                 NotificationCompat.Builder notif = new NotificationCompat.Builder(addProject.this, "ch1")
                                         .setSmallIcon(android.R.drawable.stat_notify_sync)
                                         .setContentTitle("Project Created!")
-                                        .setContentText("Project "+etTitle.getText().toString()+" has been uploaded with Project ID " + String.valueOf(pjID) + ".");
+                                        .setContentText("Project " + etTitle.getText().toString() + " has been uploaded with Project ID " + String.valueOf(pjID) + ".");
 
                                 nMC = NotificationManagerCompat.from(addProject.this);
                                 reminder = notif.build();
                                 nMC.notify(1, reminder);
                             }
 
-                            if(selected)
-                                new uploadimage().execute(img,pjID);
+                            if (selected)
+                                new uploadimage().execute(img, pjID);
 
 
                             break;
@@ -169,24 +169,24 @@ public class addProject extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent intent = new Intent(addProject.this,myProjects.class);
-        intent.putExtra("User",user);
+        Intent intent = new Intent(addProject.this, myProjects.class);
+        intent.putExtra("User", user);
         startActivity(intent);
     }
 
 
-    private class uploadimage extends AsyncTask<Object,String,String> {
+    private class uploadimage extends AsyncTask<Object, String, String> {
         private String result;
+
         @Override
-        protected String doInBackground(Object...params) {
-            Uri image =(Uri) params[0];
+        protected String doInBackground(Object... params) {
+            Uri image = (Uri) params[0];
             int ID = (int) params[1];
             final String URL = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(ID) + "/";
 
             File file = new File(getPath(image));
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
             MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
-
 
 
             Retrofit retrofit = NetworkClient.getRetrofit(URL);
@@ -212,16 +212,16 @@ public class addProject extends AppCompatActivity {
             Intent intent = new Intent(addProject.this, welcome.class);
             intent.putExtra("User", user);
             startActivity(intent);
-;
+            ;
         }
-        public String getPath(Uri uri)
-        {
-            String[] projection = { MediaStore.Images.Media.DATA };
+
+        public String getPath(Uri uri) {
+            String[] projection = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
             if (cursor == null) return null;
-            int column_index =             cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
-            String s=cursor.getString(column_index);
+            String s = cursor.getString(column_index);
             cursor.close();
             return s;
         }

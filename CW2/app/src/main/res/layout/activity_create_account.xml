@@ -35,7 +35,6 @@
     <EditText
         android:id="@+id/etStudentIDca"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/whiteborderblackfill"
@@ -48,7 +47,8 @@
         android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewAcc" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNewAcc"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvPasswordca"
@@ -65,7 +65,6 @@
         android:id="@+id/etPasswordca"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
         android:fontFamily="@font/roboto_medium"
@@ -76,7 +75,8 @@
         android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etStudentIDca" />
+        app:layout_constraintTop_toBottomOf="@+id/etStudentIDca"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvRepeatPasswordca"
@@ -92,7 +92,6 @@
     <EditText
         android:id="@+id/etRepeatPasswordca"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
@@ -105,7 +104,8 @@
         android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordca" />
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordca"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvFirstName"
@@ -121,7 +121,6 @@
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
@@ -134,7 +133,8 @@
         android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRepeatPasswordca" />
+        app:layout_constraintTop_toBottomOf="@+id/etRepeatPasswordca"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvLastName"
@@ -150,7 +150,6 @@
     <EditText
         android:id="@+id/etLastName"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/whiteborderblackfill"
@@ -163,13 +162,14 @@
         android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/etFirstName"
+        app:layout_constraintWidth_percent="0.7" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/greybordergreyfill">
+        android:background="@drawable/greybordergreyfill"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/tvPJca"
@@ -180,13 +180,13 @@
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
+            android:onClick="toHome"
             android:paddingHorizontal="15sp"
             android:paddingVertical="5dp"
             android:text="PJ"
             android:textColor="@color/primary"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:onClick="toHome"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,13 +196,12 @@
             android:layout_marginEnd="15dp"
             android:background="@drawable/whiteborderwhitefill"
             android:fontFamily="@font/roboto_medium"
+            android:onClick="toWelcome"
             android:paddingHorizontal="15sp"
             android:paddingVertical="5dp"
             android:text="Create Account"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:onClick="toWelcome"
-            />
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

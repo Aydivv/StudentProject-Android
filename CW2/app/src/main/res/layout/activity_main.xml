@@ -31,7 +31,6 @@
     <EditText
         android:id="@+id/etStudentID"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -42,12 +41,12 @@
         android:paddingVertical="5dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintWidth_percent="0.7" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="172dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -58,7 +57,8 @@
         android:paddingVertical="5dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintWidth_percent="0.7" />
 
 
     <TextView
@@ -71,6 +71,7 @@
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@+id/etStudentID"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
     <TextView
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
@@ -89,6 +90,7 @@
         android:background="@drawable/blackroundedcorner"
         android:minWidth="0dp"
         android:minHeight="0dp"
+        android:onClick="toWelcome"
         android:paddingHorizontal="35dp"
         android:paddingVertical="5dp"
         android:text="Login"
@@ -98,18 +100,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.657"
-        android:onClick="toWelcome"/>
+        app:layout_constraintVertical_bias="0.657" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/black"
+        android:onClick="toRegister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="toRegister">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/register"

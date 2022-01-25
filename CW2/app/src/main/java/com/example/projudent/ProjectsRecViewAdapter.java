@@ -86,19 +86,19 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                             public void onClick(DialogInterface dialog, int id) {
                                 deletePJ(projects.get(position).getProjectID());
 
-                                if(user.getPrefs().get(1)) {
+                                if (user.getPrefs().get(1)) {
                                     NotificationCompat.Builder notif = new NotificationCompat.Builder(context, "ch1")
                                             .setSmallIcon(android.R.drawable.stat_notify_sync)
                                             .setContentTitle("Project Deleted!")
-                                            .setContentText("Project "+projects.get(position).getTitle()+" has been deleted!");
+                                            .setContentText("Project " + projects.get(position).getTitle() + " has been deleted!");
 
                                     nMC = NotificationManagerCompat.from(context);
                                     reminder = notif.build();
                                     nMC.notify(1, reminder);
                                 }
 
-                                Intent intent = new Intent(context.getApplicationContext(),myProjects.class);
-                                intent.putExtra("User",user);
+                                Intent intent = new Intent(context.getApplicationContext(), myProjects.class);
+                                intent.putExtra("User", user);
                                 context.startActivity(intent);
                             }
                         });
@@ -120,17 +120,17 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(),editProject.class);
-                intent.putExtra("User",user);
-                intent.putExtra("ID",String.valueOf(projects.get(position).getProjectID()));
+                Intent intent = new Intent(context.getApplicationContext(), editProject.class);
+                intent.putExtra("User", user);
+                intent.putExtra("ID", String.valueOf(projects.get(position).getProjectID()));
                 context.startActivity(intent);
             }
         });
-        if (projects.get(position).getExpanded()){
+        if (projects.get(position).getExpanded()) {
             TransitionManager.beginDelayedTransition(holder.parent);
             holder.hiddenRL.setVisibility(View.VISIBLE);
             holder.down.setVisibility(View.GONE);
-        } else{
+        } else {
             TransitionManager.beginDelayedTransition(holder.parent);
             holder.hiddenRL.setVisibility(View.GONE);
             holder.down.setVisibility(View.VISIBLE);
@@ -154,13 +154,13 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvTitle, tvYear, tvDesc;
         private CardView parent;
         private ImageView ivThumbnail;
         private RelativeLayout hiddenRL;
-        private ImageView down,up;
+        private ImageView down, up;
         private TextView btnDelete;
         private TextView btnEdit;
 
@@ -179,25 +179,23 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
         }
     }
 
-    public void deletePJ(int ID){
+    public void deletePJ(int ID) {
         String url = "http://web.socem.plymouth.ac.uk/COMP2000/api/students/" + String.valueOf(ID);
 
 
         RequestQueue queue = Volley.newRequestQueue(context.getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.DELETE, url,
-                new Response.Listener<String>()
-                {
+                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Toast.makeText(context.getApplicationContext(),"Project deleted.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context.getApplicationContext(), "Project deleted.", Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context.getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context.getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 }
         );

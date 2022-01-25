@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/backbutton"
@@ -22,8 +22,8 @@
             android:layout_marginTop="44dp"
             android:layout_marginEnd="20dp"
             android:layout_toLeftOf="@id/tvEditPJi"
-            android:src="@drawable/backbutton"
-            android:onClick="back"/>
+            android:onClick="back"
+            android:src="@drawable/backbutton" />
 
         <TextView
             android:id="@+id/tvEditPJi"
@@ -55,7 +55,6 @@
     <EditText
         android:id="@+id/etTitleEPJ"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.7"
         android:layout_height="46dp"
         android:layout_marginTop="72dp"
         android:background="@drawable/hollow_rounded_orange"
@@ -67,7 +66,8 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditPJ" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEditPJ"
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvYearEPJ"

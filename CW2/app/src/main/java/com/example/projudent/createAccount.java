@@ -21,6 +21,7 @@ public class createAccount extends AppCompatActivity {
     private EditText etrPassword;
     private EditText etfname;
     private EditText etlname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +31,16 @@ public class createAccount extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
+        overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
     }
 
     public void toHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
+        overridePendingTransition(R.anim.left_slide_in, R.anim.left_slide_out);
     }
 
-    public void toWelcome(View view){
+    public void toWelcome(View view) {
         etID = findViewById(R.id.etStudentIDca);
         etpassword = findViewById(R.id.etPasswordca);
         etrPassword = findViewById(R.id.etRepeatPasswordca);
@@ -63,8 +64,8 @@ public class createAccount extends AppCompatActivity {
             String password = etpassword.getText().toString().trim();
             String fname = etfname.getText().toString().trim();
             String lname = etlname.getText().toString().trim();
-            createUser(ID,password,fname,lname);
-            Toast.makeText(createAccount.this,"Account Created.",Toast.LENGTH_SHORT).show();
+            createUser(ID, password, fname, lname);
+            Toast.makeText(createAccount.this, "Account Created.", Toast.LENGTH_SHORT).show();
 
             User user = new User(ID, fname, lname, password);
             Intent intent = new Intent(this, welcome.class);
@@ -73,14 +74,13 @@ public class createAccount extends AppCompatActivity {
         }
     }
 
-    public void createUser(int ID,String pword,String fname,String lname){
+    public void createUser(int ID, String pword, String fname, String lname) {
         try {
             int p = pword.hashCode();
-            FileOutputStream fop = openFileOutput("users.txt",Context.MODE_APPEND);
+            FileOutputStream fop = openFileOutput("users.txt", Context.MODE_APPEND);
             fop.write((String.valueOf(ID) + "," + String.valueOf(p) + "," + fname + "," + lname + "\n").getBytes(StandardCharsets.UTF_8));
             fop.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
