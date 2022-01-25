@@ -79,7 +79,6 @@ public class createAccount extends AppCompatActivity {
             FileOutputStream fop = openFileOutput("users.txt",Context.MODE_APPEND);
             fop.write((String.valueOf(ID) + "," + String.valueOf(p) + "," + fname + "," + lname + "\n").getBytes(StandardCharsets.UTF_8));
             fop.close();
-            Toast.makeText(createAccount.this,String.valueOf(ID) + "," + String.valueOf(p) + "," + fname + "," + lname + "Saved to users.txt.",Toast.LENGTH_SHORT).show();
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());

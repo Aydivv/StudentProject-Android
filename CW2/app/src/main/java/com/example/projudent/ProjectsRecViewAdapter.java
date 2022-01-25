@@ -93,7 +93,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                                             .setContentText("Project "+projects.get(position).getTitle()+" has been deleted!");
 
                                     nMC = NotificationManagerCompat.from(context);
-                                    reminder = notif.build();       
+                                    reminder = notif.build();
                                     nMC.notify(1, reminder);
                                 }
 

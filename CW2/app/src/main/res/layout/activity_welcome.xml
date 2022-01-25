@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
-        android:text="SURYANSH"
+        android:text="NAME"
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -62,51 +62,34 @@
         app:layout_constraintStart_toStartOf="@+id/tvWelcome"
         app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
+
     <TextView
         android:id="@+id/tvLatestPJ"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="204dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Your latest project was"
+        android:text="You can use this app to view, edit and delete your student projects."
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@id/tvWelcome"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvPJName"
-        android:text="Latest Project"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/tvLatestPJ"
-        app:layout_constraintStart_toEndOf="@id/guideline3"
-        android:fontFamily="@font/roboto_medium"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvTotalPJs"
-        android:textSize="20sp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Total number of projects: 120"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/guideline3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="80dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/tvYourPJs"
-        android:text="Your projects: 5"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:layout_marginBottom="36dp"
         android:fontFamily="@font/roboto_medium"
-        app:layout_constraintTop_toBottomOf="@id/tvTotalPJs"
-        app:layout_constraintStart_toEndOf="@id/guideline3"/>
+        android:text="Swipe left to manage your projects!"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guideline3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

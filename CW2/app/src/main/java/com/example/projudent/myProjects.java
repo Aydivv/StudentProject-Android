@@ -114,4 +114,12 @@ public class myProjects extends AppCompatActivity {
         intent.putExtra("User",user);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, welcome.class);
+        intent.putExtra("User",user);
+        startActivity(intent);
+        overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
+    }
 }

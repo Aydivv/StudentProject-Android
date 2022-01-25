@@ -73,6 +73,10 @@ public class addProject extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     public void toWelcome(View view) {
 
         if (etTitle.length() == 0) {
@@ -162,6 +166,12 @@ public class addProject extends AppCompatActivity {
             }
         });
         q.add(req);
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(addProject.this,myProjects.class);
+        intent.putExtra("User",user);
+        startActivity(intent);
     }
 
 

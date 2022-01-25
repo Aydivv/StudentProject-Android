@@ -52,6 +52,12 @@ public class editProject extends AppCompatActivity {
         }
     }
 
+    public void back(View view) {
+        Intent intent = new Intent(editProject.this,myProjects.class);
+        intent.putExtra("User",user);
+        startActivity(intent);
+    }
+
     public void toWelcome(View view){
         if (etTitle.length() == 0) {
             etTitle.setError("Enter Title");
@@ -105,5 +111,9 @@ public class editProject extends AppCompatActivity {
                     }
                 });
         queue.add(request);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

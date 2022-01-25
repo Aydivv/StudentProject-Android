@@ -55,6 +55,10 @@ public class Preferences extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     public void toWelcome(View view) {
 
 

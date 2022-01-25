@@ -7,22 +7,39 @@
     android:background="@color/primary"
     tools:context=".addProject">
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/tvEditPJ"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="EDIT PROJECT"
-        android:background="@drawable/primaryborderblackfill"
-        android:textColor="@color/white"
-        android:paddingHorizontal="20dp"
-        android:textSize="35sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/backbutton"
+            android:layout_width="45dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toLeftOf="@id/tvEditPJi"
+            android:src="@drawable/backbutton"
+            android:onClick="back"/>
+
+        <TextView
+            android:id="@+id/tvEditPJi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/primaryborderblackfill"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingHorizontal="20dp"
+            android:text="Edit Project"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvTitleEPJ"
@@ -99,10 +116,11 @@
         android:layout_marginTop="64dp"
         android:background="@drawable/hollow_rounded_orange"
         android:fontFamily="@font/roboto_medium"
-        android:gravity="center"
+        android:gravity="top"
         android:inputType="textMultiLine"
         android:lines="12"
         android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -20,6 +20,10 @@ public class welcome extends AppCompatActivity{
         tvName.setText(user.getFirst_Name());
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     public void toProjects(View view) {
         Intent intent = new Intent(this,myProjects.class);
         intent.putExtra("User",user);

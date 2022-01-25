@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             login = checkLogin(ID, pword);
 
             if (login) {
-                Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Logged in.", Toast.LENGTH_SHORT).show();
                 ArrayList<String> names = getNames(ID);
                 user = new User(ID, names.get(0),names.get(1), pword);
                 Intent intent = new Intent(this, welcome.class);
