@@ -71,7 +71,7 @@ public class editProject extends AppCompatActivity {
 
             if (user.getPrefs().get(2)) {
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(editProject.this, "ch1")
-                        .setSmallIcon(android.R.drawable.stat_notify_sync)
+                        .setSmallIcon(android.R.drawable.stat_sys_upload)
                         .setContentTitle("Project Edited!")
                         .setContentText("Project " + etTitle.getText().toString() + " has been edited!");
 

@@ -79,7 +79,6 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage("Are you sure you want to delete this project?");
                 builder.setCancelable(true);
-
                 builder.setPositiveButton(
                         "Yes",
                         new DialogInterface.OnClickListener() {
@@ -88,7 +87,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
 
                                 if (user.getPrefs().get(1)) {
                                     NotificationCompat.Builder notif = new NotificationCompat.Builder(context, "ch1")
-                                            .setSmallIcon(android.R.drawable.stat_notify_sync)
+                                            .setSmallIcon(android.R.drawable.stat_sys_upload)
                                             .setContentTitle("Project Deleted!")
                                             .setContentText("Project " + projects.get(position).getTitle() + " has been deleted!");
 
@@ -135,7 +134,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
             holder.hiddenRL.setVisibility(View.GONE);
             holder.down.setVisibility(View.VISIBLE);
         }
-
+        //Image in Card View
         String base64ImageString = projects.get(position).getImage();
         Glide.with(context)
                 .asBitmap()
