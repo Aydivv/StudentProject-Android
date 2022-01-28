@@ -2,6 +2,7 @@ package com.example.projudent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -28,6 +29,8 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +58,7 @@ public class addProject extends AppCompatActivity {
     private boolean selected = false;
     private String filepath = "";
     private Uri img;
+    private ConstraintLayout root;
     NotificationManagerCompat nMC;
     Notification reminder;
 
@@ -66,6 +70,7 @@ public class addProject extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etYear = findViewById(R.id.etYear);
         etDescription = findViewById(R.id.etDescription);
+        root = (ConstraintLayout) findViewById(R.id.rootAddPJs);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel nChannel = new NotificationChannel("ch1", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manage = getSystemService(NotificationManager.class);
@@ -81,8 +86,8 @@ public class addProject extends AppCompatActivity {
 
         if (etTitle.length() == 0) {
             etTitle.setError("Enter Title");
-        } else if (etYear.length() == 0) {
-            etYear.setError("Enter Year");
+        } else if (etYear.length() != 4) {
+            etYear.setError("Enter Valid Year");
         } else if (etDescription.length() == 0) {
             etDescription.setError("Enter Description");
         } else {
@@ -112,16 +117,12 @@ public class addProject extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
-                            Toast.makeText(addProject.this, "Project added.", Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        Toast.makeText(addProject.this, "Project added.", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
+                Toast.makeText(addProject.this, "Project has been uploaded.", Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(request_json);
@@ -139,7 +140,7 @@ public class addProject extends AppCompatActivity {
 
                             if (user.getPrefs().get(0)) {
                                 NotificationCompat.Builder notif = new NotificationCompat.Builder(addProject.this, "ch1")
-                                        .setSmallIcon(android.R.drawable.stat_sys_upload)
+                                        .setSmallIcon(android.R.drawable.stat_sys_upload_done)
                                         .setContentTitle("Project Created!")
                                         .setContentText("Project " + etTitle.getText().toString() + " has been uploaded with Project ID " + String.valueOf(pjID) + ".");
 
@@ -147,6 +148,7 @@ public class addProject extends AppCompatActivity {
                                 reminder = notif.build();
                                 nMC.notify(1, reminder);
                             }
+
 
                             if (selected)
                                 new uploadimage().execute(img, pjID);

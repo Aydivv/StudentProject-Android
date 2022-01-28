@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class myProjects extends AppCompatActivity {
     private RecyclerView projectsRV;
     private TextView myPJs;
-    private TextView tvEmpty;
+    private TextView tvNoPJ;
     private User user;
     private ArrayList<Project> currentProjects;
     private ProgressBar pb;
@@ -42,7 +42,7 @@ public class myProjects extends AppCompatActivity {
         projectsRV = findViewById(R.id.rvProjects);
         myPJs = findViewById(R.id.tvMyPJ);
         pb = findViewById(R.id.pbPJ);
-        tvEmpty = findViewById(R.id.tvEmpty);
+        tvNoPJ = findViewById(R.id.tvNoPJs);
         currentProjects = new ArrayList<Project>();
         ProjectsRecViewAdapter adapter = new ProjectsRecViewAdapter(this, user);
 
@@ -82,6 +82,8 @@ public class myProjects extends AppCompatActivity {
 
                 }
                 pb.setVisibility(View.GONE);
+                if(currentProjects.size()==0)
+                    tvNoPJ.setVisibility(View.VISIBLE);
                 projectsRV.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

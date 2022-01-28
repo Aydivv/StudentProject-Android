@@ -66,8 +66,8 @@ public class editProject extends AppCompatActivity {
     public void toWelcome(View view) {
         if (etTitle.length() == 0) {
             etTitle.setError("Enter Title");
-        } else if (etYear.length() == 0) {
-            etYear.setError("Enter Year");
+        } else if (etYear.length() != 4) {
+            etYear.setError("Enter Valid Year");
         } else if (etDesc.length() == 0) {
             etDesc.setError("Enter Description");
         } else {
@@ -75,7 +75,7 @@ public class editProject extends AppCompatActivity {
 
             if (user.getPrefs().get(2)) {
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(editProject.this, "ch1")
-                        .setSmallIcon(android.R.drawable.stat_sys_upload)
+                        .setSmallIcon(android.R.drawable.ic_menu_edit)
                         .setContentTitle("Project Edited!")
                         .setContentText("Project " + etTitle.getText().toString() + " has been edited!");
 

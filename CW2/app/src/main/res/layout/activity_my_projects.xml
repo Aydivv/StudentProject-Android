@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".myProjects">
+    tools:context=".myProjects"
+    android:id="@+id/rootMyPJs">
 
     <TextView
         android:id="@+id/tvMyPJ"
@@ -19,6 +20,21 @@
         android:textSize="27sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNoPJs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:text="You have no Projects!"
+        android:textColor="@color/primary"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyPJ" />
 
     <ProgressBar
         android:id="@+id/pbPJ"

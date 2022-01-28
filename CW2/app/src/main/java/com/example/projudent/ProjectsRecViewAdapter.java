@@ -87,7 +87,7 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
 
                                 if (user.getPrefs().get(1)) {
                                     NotificationCompat.Builder notif = new NotificationCompat.Builder(context, "ch1")
-                                            .setSmallIcon(android.R.drawable.stat_sys_upload)
+                                            .setSmallIcon(android.R.drawable.ic_delete)
                                             .setContentTitle("Project Deleted!")
                                             .setContentText("Project " + projects.get(position).getTitle() + " has been deleted!");
 
