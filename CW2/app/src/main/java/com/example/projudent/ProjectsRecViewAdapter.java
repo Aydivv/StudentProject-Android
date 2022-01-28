@@ -121,7 +121,8 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
             public void onClick(View v) {
                 Intent intent = new Intent(context.getApplicationContext(), editProject.class);
                 intent.putExtra("User", user);
-                intent.putExtra("ID", String.valueOf(projects.get(position).getProjectID()));
+                projects.get(position).setImage("0101");
+                intent.putExtra("Project", projects.get(position));
                 context.startActivity(intent);
             }
         });

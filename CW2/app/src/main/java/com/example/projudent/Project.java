@@ -1,6 +1,8 @@
 package com.example.projudent;
 
-public class Project {
+import java.io.Serializable;
+
+public class Project implements Serializable {
     private int projectID;
     private int studentID;
     private String Title;

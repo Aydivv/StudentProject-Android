@@ -36,13 +36,14 @@ public class editProject extends AppCompatActivity {
     private EditText etDesc;
     NotificationManagerCompat nMC;
     Notification reminder;
+    private Project pj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_project);
         user = (User) getIntent().getSerializableExtra("User");
-        ID = (String) getIntent().getStringExtra("ID");
+        pj = (Project) getIntent().getSerializableExtra("Project");
         etTitle = findViewById(R.id.etTitleEPJ);
         etYear = findViewById(R.id.etYearEPJ);
         etDesc = findViewById(R.id.etDescriptionEPJ);
@@ -51,6 +52,9 @@ public class editProject extends AppCompatActivity {
             NotificationManager manage = getSystemService(NotificationManager.class);
             manage.createNotificationChannel(nChannel);
         }
+        etTitle.setHint(pj.getTitle());
+        etYear.setHint(String.valueOf(pj.getYear()));
+        etDesc.setHint(pj.getDesc());
     }
 
     public void back(View view) {
@@ -67,7 +71,7 @@ public class editProject extends AppCompatActivity {
         } else if (etDesc.length() == 0) {
             etDesc.setError("Enter Description");
         } else {
-            editProject(ID);
+            editProject(String.valueOf(pj.getProjectID()));
 
             if (user.getPrefs().get(2)) {
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(editProject.this, "ch1")
