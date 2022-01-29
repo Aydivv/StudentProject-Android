@@ -189,7 +189,8 @@ public class ProjectsRecViewAdapter extends RecyclerView.Adapter<ProjectsRecView
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Toast.makeText(context.getApplicationContext(), "Project deleted.", Toast.LENGTH_SHORT).show();
+                        if (user.getPrefs().get(1))
+                            Toast.makeText(context.getApplicationContext(), "Project deleted.", Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {

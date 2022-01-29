@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Swipe left to manage your projects!"
+        android:text="Touch the projects section to manage your projects!"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

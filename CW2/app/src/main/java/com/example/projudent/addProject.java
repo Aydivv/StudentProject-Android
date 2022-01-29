@@ -17,8 +17,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.provider.MediaStore;
+import android.provider.Telephony;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -51,14 +54,14 @@ import retrofit2.http.Multipart;
 
 public class addProject extends AppCompatActivity {
     private User user;
-    private EditText etTitle;
-    private EditText etYear;
-    private EditText etDescription;
+    private EditText etTitle,etYear,etDescription;
+    private TextView tvTitle,tvYear,tvDesc,tvUpload;
     private int pjID = 0;
     private boolean selected = false;
     private String filepath = "";
     private Uri img;
     private ConstraintLayout root;
+    private ProgressBar pb;
     NotificationManagerCompat nMC;
     Notification reminder;
 
@@ -70,7 +73,12 @@ public class addProject extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etYear = findViewById(R.id.etYear);
         etDescription = findViewById(R.id.etDescription);
+        tvUpload = findViewById(R.id.etUpload);
+        tvTitle = findViewById(R.id.tvTitle);
+        tvYear = findViewById(R.id.tvYear);
+        tvDesc = findViewById(R.id.tvDesc);
         root = (ConstraintLayout) findViewById(R.id.rootAddPJs);
+        pb = findViewById(R.id.pbAdd);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel nChannel = new NotificationChannel("ch1", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manage = getSystemService(NotificationManager.class);
@@ -93,6 +101,8 @@ public class addProject extends AppCompatActivity {
         } else {
             addProject();
             if (!selected) {
+                if (user.getPrefs().get(0))
+                    Toast.makeText(addProject.this, "Project has been uploaded.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, welcome.class);
                 intent.putExtra("User", user);
                 startActivity(intent);
@@ -117,12 +127,12 @@ public class addProject extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(addProject.this, "Project added.", Toast.LENGTH_SHORT).show();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(addProject.this, "Project has been uploaded.", Toast.LENGTH_SHORT).show();
+
             }
         });
         queue.add(request_json);
@@ -211,6 +221,8 @@ public class addProject extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            if (user.getPrefs().get(0))
+                Toast.makeText(addProject.this, "Project has been uploaded.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(addProject.this, welcome.class);
             intent.putExtra("User", user);
             startActivity(intent);

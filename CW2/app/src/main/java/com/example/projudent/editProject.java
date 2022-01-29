@@ -106,13 +106,15 @@ public class editProject extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(editProject.this, "Project has been edited.", Toast.LENGTH_SHORT).show();
+                        if (user.getPrefs().get(2))
+                            Toast.makeText(editProject.this, "Project has been edited.", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(editProject.this, "Project has been edited.", Toast.LENGTH_SHORT).show();
+                        if (user.getPrefs().get(2))
+                            Toast.makeText(editProject.this, "Project has been edited.", Toast.LENGTH_SHORT).show();
                     }
                 });
         queue.add(request);
