@@ -1,4 +1,4 @@
-#  COMP 2001 Coursework
+#  COMP 2000 Coursework
 ## Coursework 1 - FarmBnB Booking Application
 The CW1 folder contains all the project files required for this android application.
 
